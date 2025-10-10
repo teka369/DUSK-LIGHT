@@ -13,7 +13,7 @@ const Principal: React.FC = () => {
         {/* Logo */}
         <div className="flex items-center space-x-3">
           <img 
-            src="/image.png" 
+            src="image.png" 
             alt="Dusk Light Logo" 
             className="w-16 h-16 object-contain"
           />
@@ -65,7 +65,7 @@ const Principal: React.FC = () => {
         <div className="lg:w-1/2">
           <div className="w-full h-96 lg:h-[500px] flex items-center justify-center">
             <img 
-              src="/auto.png" 
+              src="auto.png" 
               alt="fotos" 
               className="w-full h-full object-cover filter grayscale brightness-75 contrast-110"
               style={{
@@ -86,7 +86,7 @@ const Principal: React.FC = () => {
         <div className="lg:w-1/2">
           <div className="w-full h-96 flex items-center justify-center">
             <img 
-              src="/paisaje.png" 
+              src="paisaje.png" 
               alt="fotos" 
               className="w-full h-full object-cover filter grayscale brightness-75 contrast-110"
               style={{
@@ -204,7 +204,7 @@ const Principal: React.FC = () => {
             <div className="group relative bg-[#1A1A1A] rounded-xl overflow-hidden hover:bg-[#2A2A2A] transition-all duration-300">
               <div className="aspect-square relative overflow-hidden">
                 <img 
-                  src="/fotos.jpeg" 
+                  src="fotos.jpeg" 
                   alt="Sesión Retrato Individual" 
                   className="w-full h-full object-cover filter grayscale brightness-80 contrast-105 group-hover:brightness-90 transition-all duration-300"
                   style={{
@@ -235,7 +235,7 @@ const Principal: React.FC = () => {
             <div className="group relative bg-[#1A1A1A] rounded-xl overflow-hidden hover:bg-[#2A2A2A] transition-all duration-300">
               <div className="aspect-square relative overflow-hidden">
                 <img 
-                  src="/auto.png" 
+                  src="auto.png" 
                   alt="Sesión Pareja" 
                   className="w-full h-full object-cover filter grayscale brightness-80 contrast-105 group-hover:brightness-90 transition-all duration-300"
                   style={{
@@ -261,7 +261,7 @@ const Principal: React.FC = () => {
             <div className="group relative bg-[#1A1A1A] rounded-xl overflow-hidden hover:bg-[#2A2A2A] transition-all duration-300">
               <div className="aspect-square relative overflow-hidden">
                 <img 
-                  src="/paisaje.png" 
+                  src="paisaje.png" 
                   alt="Sesión Familiar" 
                   className="w-full h-full object-cover filter grayscale brightness-80 contrast-105 group-hover:brightness-90 transition-all duration-300"
                   style={{
@@ -292,7 +292,7 @@ const Principal: React.FC = () => {
             <div className="group relative bg-[#1A1A1A] rounded-xl overflow-hidden hover:bg-[#2A2A2A] transition-all duration-300">
               <div className="aspect-square relative overflow-hidden">
                 <img 
-                  src="/fotos.jpeg" 
+                  src="fotos.jpeg" 
                   alt="Pack Redes Sociales" 
                   className="w-full h-full object-cover filter grayscale brightness-80 contrast-105 group-hover:brightness-90 transition-all duration-300"
                   style={{
@@ -318,7 +318,7 @@ const Principal: React.FC = () => {
             <div className="group relative bg-[#1A1A1A] rounded-xl overflow-hidden hover:bg-[#2A2A2A] transition-all duration-300">
               <div className="aspect-square relative overflow-hidden">
                 <img 
-                  src="/auto.png" 
+                  src="auto.png" 
                   alt="Evento Corporativo" 
                   className="w-full h-full object-cover filter grayscale brightness-80 contrast-105 group-hover:brightness-90 transition-all duration-300"
                   style={{
@@ -344,7 +344,7 @@ const Principal: React.FC = () => {
             <div className="group relative bg-[#1A1A1A] rounded-xl overflow-hidden hover:bg-[#2A2A2A] transition-all duration-300">
               <div className="aspect-square relative overflow-hidden">
                 <img 
-                  src="/paisaje.png" 
+                  src="paisaje.png" 
                   alt="Sesión Artística" 
                   className="w-full h-full object-cover filter grayscale brightness-80 contrast-105 group-hover:brightness-90 transition-all duration-300"
                   style={{
