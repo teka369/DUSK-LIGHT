@@ -23,7 +23,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
         <div className="flex items-center justify-between p-6 border-b border-[#1A1A1A]">
           <div className="flex items-center space-x-3">
             <img 
-              src="image.png" 
+              src="/image.png" 
               alt="Dusk Light Logo" 
               className="w-10 h-10 object-contain"
             />

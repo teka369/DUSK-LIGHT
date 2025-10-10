@@ -178,7 +178,7 @@ const Tienda: React.FC = () => {
         {/* Logo */}
         <div className="flex items-center space-x-3">
           <img 
-            src="image.png" 
+            src="/image.png" 
             alt="Dusk Light Logo" 
             className="w-16 h-16 object-contain"
           />

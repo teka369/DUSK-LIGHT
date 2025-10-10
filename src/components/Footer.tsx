@@ -9,7 +9,7 @@ const Footer: React.FC = () => {
           {/* Logo */}
           <div className="flex items-center space-x-3 justify-center md:justify-start">
             <img 
-              src="image.png" 
+              src="/image.png" 
               alt="Dusk Light Logo" 
               className="w-12 h-12 object-contain"
             />

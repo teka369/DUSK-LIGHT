@@ -13,7 +13,7 @@ const Principal: React.FC = () => {
         {/* Logo */}
         <div className="flex items-center space-x-3">
           <img 
-            src="image.png" 
+            src="/image.png" 
             alt="Dusk Light Logo" 
             className="w-16 h-16 object-contain"
           />
@@ -65,7 +65,7 @@ const Principal: React.FC = () => {
         <div className="lg:w-1/2">
           <div className="w-full h-96 lg:h-[500px] flex items-center justify-center">
             <img 
-              src="auto.png" 
+              src="/auto.png" 
               alt="fotos" 
               className="w-full h-full object-cover filter grayscale brightness-75 contrast-110"
               style={{
