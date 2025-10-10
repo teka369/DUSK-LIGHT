@@ -11,7 +11,8 @@ import Contacto from './pages/Contacto'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <Router>
+    {/* 🚨 ¡Añade el basename aquí! 🚨 */}
+    <Router basename="/DUSK-LIGHT"> 
       <Routes>
         <Route path="/" element={<Principal />} />
         <Route path="/sobre-nosotros" element={<SobreNosotros />} />
