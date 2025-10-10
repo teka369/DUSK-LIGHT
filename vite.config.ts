@@ -6,5 +6,5 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineConfig({
   plugins: [react(), tailwindcss()],
 
-  base: 'https://teka369.github.io/DUSK-LIGHT'
+  base: '/DUSK-LIGHT'
 })
