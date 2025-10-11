@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
-import MobileMenu from '../components/MobileMenu';
+import MobileMenu from '../../components/MobileMenu';
+import { Nav } from '../components/nav';
+
 
 const Principal: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -13,7 +14,7 @@ const Principal: React.FC = () => {
         {/* Logo */}
         <div className="flex items-center space-x-3">
           <img 
-            src="image.png" 
+            src="/DUSK-LIGHT/logo.png" 
             alt="Dusk Light Logo" 
             className="w-16 h-16 object-contain"
           />
@@ -21,27 +22,7 @@ const Principal: React.FC = () => {
         </div>
         
         {/* Navigation */}
-        <nav className="hidden md:flex space-x-8">
-          <Link to="/" className="text-[#EAEAEA] hover:text-[#B8860B] transition-colors">INICIO</Link>
-          <Link to="/" className="text-[#EAEAEA] hover:text-[#B8860B] transition-colors">CALENÍA</Link>
-          <Link to="/servicios" className="text-[#EAEAEA] hover:text-[#B8860B] transition-colors">SERVICIOS</Link>
-          <Link to="/portafolio" className="text-[#EAEAEA] hover:text-[#B8860B] transition-colors">PORTAFOLIO</Link>
-          <Link to="/sobre-nosotros" className="text-[#EAEAEA] hover:text-[#B8860B] transition-colors">NOSOTROS</Link>
-          <Link to="/tienda" className="text-[#EAEAEA] hover:text-[#B8860B] transition-colors">TIENDA</Link>
-          <Link to="/contacto" className="text-[#EAEAEA] hover:text-[#B8860B] transition-colors">CONTACTO</Link>
-        </nav>
-        
-        {/* Hamburger Menu */}
-        <button 
-          onClick={() => setIsMobileMenuOpen(true)}
-          className="md:hidden p-2 hover:bg-[#1A1A1A] rounded-lg transition-colors"
-        >
-          <div className="w-6 h-6 flex flex-col justify-center space-y-1">
-            <div className="w-full h-0.5" style={{ backgroundColor: '#EAEAEA' }}></div>
-            <div className="w-full h-0.5" style={{ backgroundColor: '#EAEAEA' }}></div>
-            <div className="w-full h-0.5" style={{ backgroundColor: '#EAEAEA' }}></div>
-          </div>
-        </button>
+        <Nav />
       </header>
 
       {/* Hero Section */}
@@ -55,17 +36,17 @@ const Principal: React.FC = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <button className="px-8 py-3 rounded-lg font-semibold transition-colors text-white" style={{ backgroundColor: '#B8860B' }} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#C70039'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#B8860B'}>
-              VER PORTAFOLIO
+               SOBRE NOSOTROS
             </button>
             <button className="px-8 py-3 rounded-lg font-semibold transition-colors text-white" style={{ backgroundColor: '#B8860B' }} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#C70039'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#B8860B'}>
-              CONTRATAR SERVICIO
+              IR A LA TIENDA
             </button>
           </div>
         </div>
         <div className="lg:w-1/2">
           <div className="w-full h-96 lg:h-[500px] flex items-center justify-center">
             <img 
-              src="auto.png" 
+              src="/DUSK-LIGHT/auto.png" 
               alt="fotos" 
               className="w-full h-full object-cover filter grayscale brightness-75 contrast-110"
               style={{
@@ -86,7 +67,7 @@ const Principal: React.FC = () => {
         <div className="lg:w-1/2">
           <div className="w-full h-96 flex items-center justify-center">
             <img 
-              src="paisaje.png" 
+              src="/DUSK-LIGHT/paisaje.png" 
               alt="fotos" 
               className="w-full h-full object-cover filter grayscale brightness-75 contrast-110"
               style={{
@@ -113,78 +94,224 @@ const Principal: React.FC = () => {
       {/* Divider */}
       <div className="w-full h-px" style={{ backgroundColor: '#1A1A1A' }}></div>
 
-      {/* Portfolio Section */}
-      <section className="px-8 py-16">
-        <h2 className="text-4xl font-bold text-[#EAEAEA] text-center mb-12">
-          NUESTRO PORTAFOLIO
-        </h2>
-        
-        {/* Portfolio Tabs */}
-        <div className="flex justify-center mb-12">
-          <div className="flex space-x-8 text-[#EAEAEA]">
-            <button className="hover:text-[#B8860B] transition-colors">Retratos</button>
-            <button className="hover:text-[#B8860B] transition-colors">Moda</button>
-            <button className="hover:text-[#B8860B] transition-colors">Producto</button>
-            <button className="hover:text-[#B8860B] transition-colors">Eventos</button>
-            <button className="hover:text-[#B8860B] transition-colors">Artistico</button>
-          </div>
-        </div>
-
-        {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Professional Sessions */}
-          <div className="border-2 rounded-lg p-6 text-center" style={{ borderColor: '#1A1A1A' }}>
-            <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style={{ backgroundColor: '#B8860B' }}>
-              <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clipRule="evenodd" />
-              </svg>
-            </div>
-            <h3 className="text-[#EAEAEA] text-lg font-semibold mb-4">Sesiones Profesionales</h3>
-            <button className="px-6 py-2 rounded-lg text-sm font-semibold transition-colors text-white" style={{ backgroundColor: '#B8860B' }} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#C70039'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#B8860B'}>
-              Sólicitar colizacion
-            </button>
+      {/* Portfolio Section - Carrusel Espectacular */}
+      <section className="px-8 py-20">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-5xl lg:text-6xl font-bold text-[#EAEAEA] mb-6">
+              NUESTRO PORTAFOLIO
+            </h2>
+            <p className="text-xl text-[#B3B3B3] max-w-2xl mx-auto">
+              Descubre nuestra colección de trabajos que capturan la esencia de cada momento
+            </p>
           </div>
 
-          {/* Event Photography */}
-          <div className="border-2 rounded-lg p-6 text-center" style={{ borderColor: '#1A1A1A' }}>
-            <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style={{ backgroundColor: '#B8860B' }}>
-              <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 110 2h-3a1 1 0 01-1-1v-6a1 1 0 00-1-1H9a1 1 0 00-1 1v6a1 1 0 01-1 1H4a1 1 0 110-2V4zm3 1h2v2H7V5zm2 4H7v2h2V9zm2-4h2v2h-2V5zm2 4h-2v2h2V9z" clipRule="evenodd" />
-              </svg>
-            </div>
-            <h3 className="text-[#EAEAEA] text-lg font-semibold mb-4">Fotografia de Eventos</h3>
-            <button className="px-6 py-2 rounded-lg text-sm font-semibold transition-colors text-white" style={{ backgroundColor: '#B8860B' }} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#C70039'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#B8860B'}>
-              Mas informacion
-            </button>
+          {/* Carrusel Principal */}
+          <div className="relative">
+            {(() => {
+              const portfolioItems = [
+                {
+                  id: 1,
+                  src: "/DUSK-LIGHT/fotos.jpeg",
+                  alt: "Retrato Artístico",
+                  title: "Retrato Artístico",
+                  category: "Fotografía de Retrato",
+                  description: "Capturamos la esencia única de cada persona con un enfoque artístico y profesional",
+                  tags: ["Retrato", "Artístico", "Profesional"]
+                },
+                {
+                  id: 2,
+                  src: "/DUSK-LIGHT/auto.png",
+                  alt: "Editorial de Moda",
+                  title: "Editorial de Moda",
+                  category: "Fotografía de Moda",
+                  description: "Visiones frescas y estilos modernos que definen las tendencias actuales",
+                  tags: ["Moda", "Editorial", "Tendencias"]
+                },
+                {
+                  id: 3,
+                  src: "/DUSK-LIGHT/paisaje.png",
+                  alt: "Paisaje Natural",
+                  title: "Paisajes Naturales",
+                  category: "Fotografía de Paisaje",
+                  description: "Paisajes hipnotizantes que conectan con la naturaleza en su forma más pura",
+                  tags: ["Paisaje", "Naturaleza", "Arte"]
+                },
+                {
+                  id: 4,
+                  src: "/DUSK-LIGHT/fotos.jpeg",
+                  alt: "Producto Estilizado",
+                  title: "Fotografía de Producto",
+                  category: "Fotografía Comercial",
+                  description: "Cada detalle, cada textura, una historia visual que vende",
+                  tags: ["Producto", "Comercial", "Marketing"]
+                },
+                {
+                  id: 5,
+                  src: "/DUSK-LIGHT/auto.png",
+                  alt: "Evento Exclusivo",
+                  title: "Eventos Exclusivos",
+                  category: "Fotografía de Eventos",
+                  description: "Eventos vibrantes, emociones capturadas en instantes únicos",
+                  tags: ["Eventos", "Exclusivo", "Emociones"]
+                }
+              ];
+
+              const [currentIndex, setCurrentIndex] = React.useState(0);
+              const [isAutoPlaying, setIsAutoPlaying] = React.useState(true);
+              const intervalRef = React.useRef<number | null>(null);
+
+              React.useEffect(() => {
+                if (isAutoPlaying) {
+                  intervalRef.current = window.setInterval(() => {
+                    setCurrentIndex((prev) => (prev + 1) % portfolioItems.length);
+                  }, 5000);
+                }
+                return () => {
+                  if (intervalRef.current) clearInterval(intervalRef.current);
+                };
+              }, [isAutoPlaying, portfolioItems.length]);
+
+              const goToSlide = (index: number) => {
+                setCurrentIndex(index);
+                setIsAutoPlaying(false);
+                setTimeout(() => setIsAutoPlaying(true), 10000);
+              };
+
+              const goToPrevious = () => {
+                setCurrentIndex((prev) => (prev - 1 + portfolioItems.length) % portfolioItems.length);
+                setIsAutoPlaying(false);
+                setTimeout(() => setIsAutoPlaying(true), 10000);
+              };
+
+              const goToNext = () => {
+                setCurrentIndex((prev) => (prev + 1) % portfolioItems.length);
+                setIsAutoPlaying(false);
+                setTimeout(() => setIsAutoPlaying(true), 10000);
+              };
+
+              return (
+                <div className="relative group">
+                  {/* Imagen Principal */}
+                  <div className="relative h-[360px] lg:h-[420px] rounded-3xl overflow-hidden shadow-2xl">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10"></div>
+                    
+                    {portfolioItems.map((item, index) => (
+                      <img
+                        key={item.id}
+                        src={item.src}
+                        alt={item.alt}
+                        className={`absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-in-out ${
+                          index === currentIndex
+                            ? "opacity-100 scale-100"
+                            : "opacity-0 scale-105"
+                        }`}
+                        style={{
+                          filter: "brightness(0.8) contrast(1.1)",
+                        }}
+                      />
+                    ))}
+
+                    {/* Contenido Superpuesto */}
+                    <div className="absolute bottom-0 left-0 right-0 p-6 lg:p-8 z-20">
+                      <div className="max-w-4xl">
+                        <div className="inline-block bg-[#B8860B]/90 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-semibold text-white mb-4">
+                          {portfolioItems[currentIndex].category}
+                        </div>
+                        <h3 className="text-2xl lg:text-3xl font-bold text-white mb-3">
+                          {portfolioItems[currentIndex].title}
+                        </h3>
+                        <p className="text-base lg:text-lg text-white/90 mb-4 max-w-2xl">
+                          {portfolioItems[currentIndex].description}
+                        </p>
+                        <div className="flex flex-wrap gap-2 mb-4">
+                          {portfolioItems[currentIndex].tags.map((tag, tagIndex) => (
+                            <span
+                              key={tagIndex}
+                              className="bg-white/20 backdrop-blur-sm px-2 py-1 rounded-full text-xs text-white/90"
+                            >
+                              #{tag}
+                            </span>
+                          ))}
+                        </div>
+                        <button className="bg-[#B8860B] hover:bg-[#C70039] text-white px-6 py-2 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg text-sm">
+                          Ver Proyecto Completo
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* Controles de Navegación */}
+                    <button
+                      onClick={goToPrevious}
+                      className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-[#B8860B] text-white p-3 rounded-full transition-all duration-300 opacity-0 group-hover:opacity-100 z-30"
+                      aria-label="Imagen anterior"
+                    >
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                      </svg>
+                    </button>
+                    <button
+                      onClick={goToNext}
+                      className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-[#B8860B] text-white p-3 rounded-full transition-all duration-300 opacity-0 group-hover:opacity-100 z-30"
+                      aria-label="Siguiente imagen"
+                    >
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                      </svg>
+                    </button>
+                  </div>
+
+                  {/* Indicadores */}
+                  <div className="flex justify-center mt-8 space-x-3">
+                    {portfolioItems.map((_, index) => (
+                      <button
+                        key={index}
+                        onClick={() => goToSlide(index)}
+                        className={`w-4 h-4 rounded-full transition-all duration-300 ${
+                          index === currentIndex
+                            ? "bg-[#B8860B] scale-125 shadow-lg"
+                            : "bg-white/30 hover:bg-white/50"
+                        }`}
+                        aria-label={`Ir a la imagen ${index + 1}`}
+                      />
+                    ))}
+                  </div>
+
+                  {/* Contador */}
+                  <div className="absolute top-4 right-4 bg-black/50 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-semibold z-30">
+                    {currentIndex + 1} / {portfolioItems.length}
+                  </div>
+                </div>
+              );
+            })()}
           </div>
 
-          {/* Event Coverage */}
-          <div className="border-2 rounded-lg p-6 text-center" style={{ borderColor: '#1A1A1A' }}>
-            <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style={{ backgroundColor: '#B8860B' }}>
-              <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-              </svg>
+          {/* Call to Action */}
+          <div className="text-center mt-16">
+            <h3 className="text-3xl font-bold text-[#EAEAEA] mb-4">
+              ¿Listo para crear algo increíble juntos?
+            </h3>
+            <p className="text-lg text-[#B3B3B3] mb-8 max-w-2xl mx-auto">
+              Cada proyecto es una oportunidad de contar una historia única. Descubre más de nuestro trabajo y contáctanos para tu próximo proyecto.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a href="/portafolio">
+                <button className="px-10 py-4 bg-[#B8860B] hover:bg-[#C70039] text-white rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-xl">
+                  VER PORTAFOLIO COMPLETO
+                </button>
+              </a>
+              <a href="/contacto">
+                <button className="px-10 py-4 border-2 border-[#B8860B] text-[#B8860B] hover:bg-[#B8860B] hover:text-white rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-105">
+                  CONTACTAR AHORA
+                </button>
+              </a>
             </div>
-            <h3 className="text-[#EAEAEA] text-lg font-semibold mb-4">Cobertura de Eventos</h3>
-            <button className="px-6 py-2 rounded-lg text-sm font-semibold transition-colors text-white" style={{ backgroundColor: '#B8860B' }} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#C70039'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#B8860B'}>
-              Reservar fecha
-            </button>
-          </div>
-
-          {/* Company Sessions */}
-          <div className="border-2 rounded-lg p-6 text-center" style={{ borderColor: '#1A1A1A' }}>
-            <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style={{ backgroundColor: '#B8860B' }}>
-              <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V8a2 2 0 012-2h2zm5-1a1 1 0 00-1 1v1h2V6a1 1 0 00-1-1zM4 8h12v6H4V8z" clipRule="evenodd" />
-              </svg>
-            </div>
-            <h3 className="text-[#EAEAEA] text-lg font-semibold mb-4">Sesiones para Empresas</h3>
-            <button className="px-6 py-2 rounded-lg text-sm font-semibold transition-colors text-white" style={{ backgroundColor: '#B8860B' }} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#C70039'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#B8860B'}>
-              Cotizar servicios
-            </button>
           </div>
         </div>
       </section>
+
+
+      
 
       {/* Divider */}
       <div className="w-full h-px" style={{ backgroundColor: '#1A1A1A' }}></div>
@@ -204,7 +331,7 @@ const Principal: React.FC = () => {
             <div className="group relative bg-[#1A1A1A] rounded-xl overflow-hidden hover:bg-[#2A2A2A] transition-all duration-300">
               <div className="aspect-square relative overflow-hidden">
                 <img 
-                  src="fotos.jpeg" 
+                  src="/DUSK-LIGHT/fotos.jpeg" 
                   alt="Sesión Retrato Individual" 
                   className="w-full h-full object-cover filter grayscale brightness-80 contrast-105 group-hover:brightness-90 transition-all duration-300"
                   style={{
@@ -235,7 +362,7 @@ const Principal: React.FC = () => {
             <div className="group relative bg-[#1A1A1A] rounded-xl overflow-hidden hover:bg-[#2A2A2A] transition-all duration-300">
               <div className="aspect-square relative overflow-hidden">
                 <img 
-                  src="auto.png" 
+                  src="/DUSK-LIGHT/auto.png" 
                   alt="Sesión Pareja" 
                   className="w-full h-full object-cover filter grayscale brightness-80 contrast-105 group-hover:brightness-90 transition-all duration-300"
                   style={{
@@ -261,7 +388,7 @@ const Principal: React.FC = () => {
             <div className="group relative bg-[#1A1A1A] rounded-xl overflow-hidden hover:bg-[#2A2A2A] transition-all duration-300">
               <div className="aspect-square relative overflow-hidden">
                 <img 
-                  src="paisaje.png" 
+                  src="/DUSK-LIGHT/paisaje.png" 
                   alt="Sesión Familiar" 
                   className="w-full h-full object-cover filter grayscale brightness-80 contrast-105 group-hover:brightness-90 transition-all duration-300"
                   style={{
@@ -292,7 +419,7 @@ const Principal: React.FC = () => {
             <div className="group relative bg-[#1A1A1A] rounded-xl overflow-hidden hover:bg-[#2A2A2A] transition-all duration-300">
               <div className="aspect-square relative overflow-hidden">
                 <img 
-                  src="fotos.jpeg" 
+                  src="/DUSK-LIGHT/fotos.jpeg" 
                   alt="Pack Redes Sociales" 
                   className="w-full h-full object-cover filter grayscale brightness-80 contrast-105 group-hover:brightness-90 transition-all duration-300"
                   style={{
@@ -318,7 +445,7 @@ const Principal: React.FC = () => {
             <div className="group relative bg-[#1A1A1A] rounded-xl overflow-hidden hover:bg-[#2A2A2A] transition-all duration-300">
               <div className="aspect-square relative overflow-hidden">
                 <img 
-                  src="auto.png" 
+                  src="/DUSK-LIGHT/auto.png" 
                   alt="Evento Corporativo" 
                   className="w-full h-full object-cover filter grayscale brightness-80 contrast-105 group-hover:brightness-90 transition-all duration-300"
                   style={{
@@ -344,7 +471,7 @@ const Principal: React.FC = () => {
             <div className="group relative bg-[#1A1A1A] rounded-xl overflow-hidden hover:bg-[#2A2A2A] transition-all duration-300">
               <div className="aspect-square relative overflow-hidden">
                 <img 
-                  src="paisaje.png" 
+                  src="/DUSK-LIGHT/paisaje.png" 
                   alt="Sesión Artística" 
                   className="w-full h-full object-cover filter grayscale brightness-80 contrast-105 group-hover:brightness-90 transition-all duration-300"
                   style={{

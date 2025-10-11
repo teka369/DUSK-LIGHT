@@ -9,7 +9,7 @@ const Footer: React.FC = () => {
           {/* Logo */}
           <div className="flex items-center space-x-3 justify-center md:justify-start">
             <img 
-              src="image.png" 
+              src="/DUSK-LIGHT/logo.png" 
               alt="Dusk Light Logo" 
               className="w-12 h-12 object-contain"
             />
@@ -67,7 +67,7 @@ const Footer: React.FC = () => {
         {/* Información adicional */}
         <div className="mt-6 text-center">
           <p className="text-[#B3B3B3] text-xs">
-            Capturando momentos únicos desde 2024. Todos los derechos reservados.
+            Capturando momentos únicos desde 2025. Todos los derechos reservados.
           </p>
         </div>
       </div>

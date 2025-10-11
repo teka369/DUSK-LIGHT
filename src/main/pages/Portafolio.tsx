@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
-import MobileMenu from '../components/MobileMenu';
+import MobileMenu from '../../components/MobileMenu';
+import { Nav } from '../components/nav';
 
 const Portafolio: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState('Todas');
@@ -14,84 +15,84 @@ const Portafolio: React.FC = () => {
       id: 1,
       title: 'Sesión Retrato Individual',
       category: 'Retratos',
-      image: '/fotos.jpeg',
+      image: '/DUSK-LIGHT/fotos.jpeg',
       description: 'Fotografía profesional de retrato'
     },
     {
       id: 2,
       title: 'Sesión de Moda',
       category: 'Moda',
-      image: '/auto.png',
+      image: '/DUSK-LIGHT/auto.png',
       description: 'Fotografía de moda editorial'
     },
     {
       id: 3,
       title: 'Boda Elegante',
       category: 'Eventos',
-      image: '/paisaje.png',
+      image: '/DUSK-LIGHT/paisaje.png',
       description: 'Cobertura de boda completa'
     },
     {
       id: 4,
       title: 'Producto Artesanal',
       category: 'Producto',
-      image: '/fotos.jpeg',
+      image: '/DUSK-LIGHT/fotos.jpeg',
       description: 'Fotografía de producto profesional'
     },
     {
       id: 5,
       title: 'Retrato en Blanco y Negro',
       category: 'Blanco y negro',
-      image: '/auto.png',
+      image: '/DUSK-LIGHT/auto.png',
       description: 'Fotografía artística monocromática'
     },
     {
       id: 6,
       title: 'Sesión Pareja',
       category: 'Retratos',
-      image: '/paisaje.png',
+      image: '/DUSK-LIGHT/paisaje.png',
       description: 'Fotografía romántica de pareja'
     },
     {
       id: 7,
       title: 'Editorial de Moda',
       category: 'Moda',
-      image: '/fotos.jpeg',
+      image: '/DUSK-LIGHT/fotos.jpeg',
       description: 'Sesión editorial de alta moda'
     },
     {
       id: 8,
       title: 'Evento Corporativo',
       category: 'Eventos',
-      image: '/auto.png',
+      image: '/DUSK-LIGHT/auto.png',
       description: 'Cobertura de evento empresarial'
     },
     {
       id: 9,
       title: 'Producto Tecnológico',
       category: 'Producto',
-      image: '/paisaje.png',
+      image: '/DUSK-LIGHT/paisaje.png',
       description: 'Fotografía de producto tecnológico'
     },
     {
       id: 10,
       title: 'Arte en Blanco y Negro',
       category: 'Blanco y negro',
-      image: '/fotos.jpeg',
+      image: '/DUSK-LIGHT/fotos.jpeg',
       description: 'Fotografía artística conceptual'
     },
     {
       id: 11,
       title: 'Retrato Familiar',
       category: 'Retratos',
-      image: '/auto.png',
+      image: '/DUSK-LIGHT/auto.png',
       description: 'Sesión familiar completa'
     },
     {
       id: 12,
       title: 'Fashion Week',
       category: 'Moda',
-      image: '/paisaje.png',
+      image: '/DUSK-LIGHT/paisaje.png',
       description: 'Cobertura de semana de la moda'
     }
   ];
@@ -107,7 +108,7 @@ const Portafolio: React.FC = () => {
         {/* Logo */}
         <div className="flex items-center space-x-3">
           <img 
-            src="/image.png" 
+            src="/DUSK-LIGHT/logo.png" 
             alt="Dusk Light Logo" 
             className="w-16 h-16 object-contain"
           />
@@ -115,27 +116,7 @@ const Portafolio: React.FC = () => {
         </div>
         
         {/* Navigation */}
-        <nav className="hidden md:flex space-x-8">
-          <Link to="/" className="text-[#EAEAEA] hover:text-[#B8860B] transition-colors">INICIO</Link>
-          <Link to="/" className="text-[#EAEAEA] hover:text-[#B8860B] transition-colors">CALENÍA</Link>
-          <Link to="/servicios" className="text-[#EAEAEA] hover:text-[#B8860B] transition-colors">SERVICIOS</Link>
-          <Link to="/portafolio" className="text-[#B8860B] transition-colors">PORTAFOLIO</Link>
-          <Link to="/sobre-nosotros" className="text-[#EAEAEA] hover:text-[#B8860B] transition-colors">NOSOTROS</Link>
-          <Link to="/tienda" className="text-[#EAEAEA] hover:text-[#B8860B] transition-colors">TIENDA</Link>
-          <Link to="/contacto" className="text-[#EAEAEA] hover:text-[#B8860B] transition-colors">CONTACTO</Link>
-        </nav>
-        
-        {/* Hamburger Menu */}
-        <button 
-          onClick={() => setIsMobileMenuOpen(true)}
-          className="md:hidden p-2 hover:bg-[#1A1A1A] rounded-lg transition-colors"
-        >
-          <div className="w-6 h-6 flex flex-col justify-center space-y-1">
-            <div className="w-full h-0.5" style={{ backgroundColor: '#EAEAEA' }}></div>
-            <div className="w-full h-0.5" style={{ backgroundColor: '#EAEAEA' }}></div>
-            <div className="w-full h-0.5" style={{ backgroundColor: '#EAEAEA' }}></div>
-          </div>
-        </button>
+        <Nav />
       </header>
 
       {/* Main Content */}

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
-import MobileMenu from '../components/MobileMenu';
+import MobileMenu from '../../components/MobileMenu';
+import { Nav } from '../components/nav';
 
 const Contacto: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -55,7 +56,7 @@ const Contacto: React.FC = () => {
         {/* Logo */}
         <div className="flex items-center space-x-3">
           <img 
-            src="/image.png" 
+            src="/DUSK-LIGHT/logo.png" 
             alt="Dusk Light Logo" 
             className="w-16 h-16 object-contain"
           />
@@ -63,27 +64,9 @@ const Contacto: React.FC = () => {
         </div>
         
         {/* Navigation */}
-        <nav className="hidden md:flex space-x-8">
-          <Link to="/" className="text-[#EAEAEA] hover:text-[#B8860B] transition-colors">INICIO</Link>
-          <Link to="/" className="text-[#EAEAEA] hover:text-[#B8860B] transition-colors">CALENÍA</Link>
-          <Link to="/servicios" className="text-[#EAEAEA] hover:text-[#B8860B] transition-colors">SERVICIOS</Link>
-          <Link to="/portafolio" className="text-[#EAEAEA] hover:text-[#B8860B] transition-colors">PORTAFOLIO</Link>
-          <Link to="/sobre-nosotros" className="text-[#EAEAEA] hover:text-[#B8860B] transition-colors">NOSOTROS</Link>
-          <Link to="/tienda" className="text-[#EAEAEA] hover:text-[#B8860B] transition-colors">TIENDA</Link>
-          <Link to="/contacto" className="text-[#B8860B] transition-colors">CONTACTO</Link>
-        </nav>
+        <Nav />
         
-        {/* Hamburger Menu */}
-        <button 
-          onClick={() => setIsMobileMenuOpen(true)}
-          className="md:hidden p-2 hover:bg-[#1A1A1A] rounded-lg transition-colors"
-        >
-          <div className="w-6 h-6 flex flex-col justify-center space-y-1">
-            <div className="w-full h-0.5" style={{ backgroundColor: '#EAEAEA' }}></div>
-            <div className="w-full h-0.5" style={{ backgroundColor: '#EAEAEA' }}></div>
-            <div className="w-full h-0.5" style={{ backgroundColor: '#EAEAEA' }}></div>
-          </div>
-        </button>
+        
       </header>
 
       {/* Main Content */}

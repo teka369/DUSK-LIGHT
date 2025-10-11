@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Nav } from '../components/nav';
 import Footer from '../components/Footer';
-import MobileMenu from '../components/MobileMenu';
+import MobileMenu from '../../components/MobileMenu';
 
 const Tienda: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState('Todas');
@@ -18,7 +19,7 @@ const Tienda: React.FC = () => {
       title: 'Retrato Elegante',
       category: 'Retratos',
       price: 25,
-      image: '/fotos.jpeg',
+      image: '/DUSK-LIGHT/fotos.jpeg',
       description: 'Fotografía de retrato profesional en blanco y negro',
       size: '3000x2000px',
       format: 'JPG'
@@ -28,7 +29,7 @@ const Tienda: React.FC = () => {
       title: 'Paisaje Montañoso',
       category: 'Paisajes',
       price: 30,
-      image: '/paisaje.png',
+      image: '/DUSK-LIGHT/paisaje.png',
       description: 'Impresionante vista de montañas al atardecer',
       size: '4000x3000px',
       format: 'JPG'
@@ -38,7 +39,7 @@ const Tienda: React.FC = () => {
       title: 'Moda Editorial',
       category: 'Moda',
       price: 35,
-      image: '/auto.png',
+      image: '/DUSK-LIGHT/auto.png',
       description: 'Sesión de moda editorial con iluminación profesional',
       size: '3500x2500px',
       format: 'JPG'
@@ -48,7 +49,7 @@ const Tienda: React.FC = () => {
       title: 'Boda Romántica',
       category: 'Eventos',
       price: 40,
-      image: '/fotos.jpeg',
+      image: '/DUSK-LIGHT/fotos.jpeg',
       description: 'Momento íntimo de una ceremonia de boda',
       size: '3000x2000px',
       format: 'JPG'
@@ -58,7 +59,7 @@ const Tienda: React.FC = () => {
       title: 'Arte Abstracto',
       category: 'Arte',
       price: 45,
-      image: '/paisaje.png',
+      image: '/DUSK-LIGHT/paisaje.png',
       description: 'Composición artística abstracta en blanco y negro',
       size: '4000x4000px',
       format: 'JPG'
@@ -68,7 +69,7 @@ const Tienda: React.FC = () => {
       title: 'Retrato Familiar',
       category: 'Retratos',
       price: 28,
-      image: '/auto.png',
+      image: '/DUSK-LIGHT/auto.png',
       description: 'Sesión familiar cálida y emotiva',
       size: '3000x2000px',
       format: 'JPG'
@@ -78,7 +79,7 @@ const Tienda: React.FC = () => {
       title: 'Paisaje Urbano',
       category: 'Paisajes',
       price: 32,
-      image: '/fotos.jpeg',
+      image: '/DUSK-LIGHT/fotos.jpeg',
       description: 'Arquitectura urbana en contraste de luces',
       size: '4000x3000px',
       format: 'JPG'
@@ -88,7 +89,7 @@ const Tienda: React.FC = () => {
       title: 'Fashion Week',
       category: 'Moda',
       price: 38,
-      image: '/paisaje.png',
+      image: '/DUSK-LIGHT/paisaje.png',
       description: 'Cobertura de pasarela de moda',
       size: '3500x2500px',
       format: 'JPG'
@@ -98,7 +99,7 @@ const Tienda: React.FC = () => {
       title: 'Evento Corporativo',
       category: 'Eventos',
       price: 42,
-      image: '/auto.png',
+      image: '/DUSK-LIGHT/auto.png',
       description: 'Fotografía de evento empresarial profesional',
       size: '3000x2000px',
       format: 'JPG'
@@ -108,7 +109,7 @@ const Tienda: React.FC = () => {
       title: 'Arte Conceptual',
       category: 'Arte',
       price: 50,
-      image: '/fotos.jpeg',
+      image: '/DUSK-LIGHT/fotos.jpeg',
       description: 'Fotografía conceptual con elementos surrealistas',
       size: '4000x4000px',
       format: 'JPG'
@@ -118,7 +119,7 @@ const Tienda: React.FC = () => {
       title: 'Retrato Artístico',
       category: 'Retratos',
       price: 33,
-      image: '/paisaje.png',
+      image: '/DUSK-LIGHT/paisaje.png',
       description: 'Retrato artístico con iluminación dramática',
       size: '3000x2000px',
       format: 'JPG'
@@ -128,7 +129,7 @@ const Tienda: React.FC = () => {
       title: 'Paisaje Nocturno',
       category: 'Paisajes',
       price: 36,
-      image: '/auto.png',
+      image: '/DUSK-LIGHT/auto.png',
       description: 'Paisaje urbano nocturno con luces de la ciudad',
       size: '4000x3000px',
       format: 'JPG'
@@ -178,7 +179,7 @@ const Tienda: React.FC = () => {
         {/* Logo */}
         <div className="flex items-center space-x-3">
           <img 
-            src="/image.png" 
+            src="/DUSK-LIGHT/logo.png" 
             alt="Dusk Light Logo" 
             className="w-16 h-16 object-contain"
           />
@@ -186,15 +187,8 @@ const Tienda: React.FC = () => {
         </div>
         
         {/* Navigation */}
-        <nav className="hidden md:flex space-x-8">
-          <Link to="/" className="text-[#EAEAEA] hover:text-[#B8860B] transition-colors">INICIO</Link>
-          <Link to="/" className="text-[#EAEAEA] hover:text-[#B8860B] transition-colors">CALENÍA</Link>
-          <Link to="/servicios" className="text-[#EAEAEA] hover:text-[#B8860B] transition-colors">SERVICIOS</Link>
-          <Link to="/portafolio" className="text-[#EAEAEA] hover:text-[#B8860B] transition-colors">PORTAFOLIO</Link>
-          <Link to="/sobre-nosotros" className="text-[#EAEAEA] hover:text-[#B8860B] transition-colors">NOSOTROS</Link>
-          <Link to="/tienda" className="text-[#B8860B] transition-colors">TIENDA</Link>
-          <Link to="/contacto" className="text-[#EAEAEA] hover:text-[#B8860B] transition-colors">CONTACTO</Link>
-        </nav>
+        <Nav />
+        
         
         {/* Cart Icon */}
         <div className="flex items-center space-x-4">
@@ -214,17 +208,7 @@ const Tienda: React.FC = () => {
             </button>
           </div>
           
-          {/* Hamburger Menu */}
-          <button 
-            onClick={() => setIsMobileMenuOpen(true)}
-            className="md:hidden p-2 hover:bg-[#1A1A1A] rounded-lg transition-colors"
-          >
-            <div className="w-6 h-6 flex flex-col justify-center space-y-1">
-              <div className="w-full h-0.5" style={{ backgroundColor: '#EAEAEA' }}></div>
-              <div className="w-full h-0.5" style={{ backgroundColor: '#EAEAEA' }}></div>
-              <div className="w-full h-0.5" style={{ backgroundColor: '#EAEAEA' }}></div>
-            </div>
-          </button>
+          
         </div>
       </header>
 

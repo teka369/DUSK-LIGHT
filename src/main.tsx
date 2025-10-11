@@ -2,12 +2,12 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import './assets/globals.css'
-import Principal from './main/Principal'
-import SobreNosotros from './pages/SobreNosotros'
-import Portafolio from './pages/Portafolio'
-import Servicios from './pages/Servicios'
-import Tienda from './pages/Tienda'
-import Contacto from './pages/Contacto'
+import Principal from './main/pages/Principal'
+import SobreNosotros from './main/pages/SobreNosotros'
+import Portafolio from './main/pages/Portafolio'
+import Servicios from './main/pages/Servicios'
+import Tienda from './main/pages/Tienda'
+import Contacto from './main/pages/Contacto'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
