@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
-import MobileMenu from '../../components/MobileMenu';
+import MobileMenu from '../components/MobileMenu';
 import { Nav } from '../components/nav';
 
 const Contacto: React.FC = () => {
