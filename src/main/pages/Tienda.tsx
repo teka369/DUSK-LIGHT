@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Nav } from '../components/nav';
 import Footer from '../components/Footer';
@@ -8,8 +8,18 @@ const Tienda: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState('Todas');
   const [searchTerm, setSearchTerm] = useState('');
   const [cart, setCart] = useState<number[]>([]);
+  const [purchasedPhotos, setPurchasedPhotos] = useState<number[]>(() => {
+    const saved = localStorage.getItem('purchasedPhotos');
+    return saved ? JSON.parse(saved) : [];
+  });
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isRefundModalOpen, setIsRefundModalOpen] = useState(false);
+  const [photoToRefund, setPhotoToRefund] = useState<number | null>(null);
+
+  useEffect(() => {
+    localStorage.setItem('purchasedPhotos', JSON.stringify(purchasedPhotos));
+  }, [purchasedPhotos]);
 
   const categories = ['Todas', 'Retratos', 'Paisajes', 'Moda', 'Eventos', 'Arte'];
 
@@ -137,6 +147,9 @@ const Tienda: React.FC = () => {
   ];
 
   const filteredPhotos = photos.filter(photo => {
+    if (purchasedPhotos.includes(photo.id)) {
+      return false;
+    }
     const matchesCategory = activeCategory === 'Todas' || photo.category === activeCategory;
     const matchesSearch = photo.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          photo.description.toLowerCase().includes(searchTerm.toLowerCase());
@@ -170,6 +183,27 @@ const Tienda: React.FC = () => {
 
   const clearCart = () => {
     setCart([]);
+  };
+
+  const getPurchasedItems = () => {
+    return photos.filter(photo => purchasedPhotos.includes(photo.id));
+  };
+
+  const handleRefund = (photoId: number) => {
+    setPurchasedPhotos(prev => prev.filter(id => id !== photoId));
+  };
+
+  const openRefundModal = (photoId: number) => {
+    setPhotoToRefund(photoId);
+    setIsRefundModalOpen(true);
+  };
+
+  const confirmRefund = () => {
+    if (photoToRefund !== null) {
+      handleRefund(photoToRefund);
+    }
+    setIsRefundModalOpen(false);
+    setPhotoToRefund(null);
   };
 
   return (
@@ -294,6 +328,7 @@ const Tienda: React.FC = () => {
                       maskImage: 'radial-gradient(circle 85% at center, black 0%, transparent 75%)',
                       WebkitMaskImage: 'radial-gradient(circle 85% at center, black 0%, transparent 75%)'
                     }}
+                    onContextMenu={(e) => e.preventDefault()}
                   />
                   
                   {/* Overlay */}
@@ -347,8 +382,60 @@ const Tienda: React.FC = () => {
 
           {/* Results Count */}
           <div className="text-center text-[#B3B3B3] mb-8">
-            <p>Mostrando {filteredPhotos.length} de {photos.length} fotografías</p>
+            <p>Mostrando {filteredPhotos.length} de {photos.filter(p => !purchasedPhotos.includes(p.id)).length} fotografías disponibles</p>
           </div>
+
+          {/* Purchased Photos Section */}
+          {purchasedPhotos.length > 0 && (
+            <div className="mb-16">
+              <div className="text-center mb-12">
+                <h2 className="text-4xl font-bold text-[#EAEAEA] mb-4">
+                  COMPRAS
+                </h2>
+                <div className="w-20 h-1 mx-auto" style={{ backgroundColor: '#B8860B' }}></div>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                {getPurchasedItems().map((photo) => (
+                  <div
+                    key={photo.id}
+                    className="group relative bg-[#1A1A1A] rounded-xl overflow-hidden border border-[#2A2A2A]"
+                  >
+                    <div className="aspect-square relative overflow-hidden">
+                      <img 
+                        src={photo.image} 
+                        alt={photo.title}
+                        className="w-full h-full object-cover filter grayscale brightness-75 contrast-110"
+                        style={{
+                          maskImage: 'radial-gradient(circle 85% at center, black 0%, transparent 75%)',
+                          WebkitMaskImage: 'radial-gradient(circle 85% at center, black 0%, transparent 75%)'
+                        }}
+                        onContextMenu={(e) => e.preventDefault()}
+                      />
+                      <div className="absolute top-4 left-4">
+                        <span className="bg-green-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
+                          YA COMPRADO
+                        </span>
+                      </div>
+                    </div>
+                    <div className="p-6">
+                      <h3 className="text-lg font-bold text-[#EAEAEA] mb-2">
+                        {photo.title}
+                      </h3>
+                      <p className="text-[#B3B3B3] text-sm mb-4">
+                        {photo.description}
+                      </p>
+                      <button
+                        onClick={() => openRefundModal(photo.id)}
+                        className="w-full px-4 py-3 font-semibold rounded-lg transition-all duration-300 bg-gray-600 text-white hover:bg-gray-500"
+                      >
+                        REEMBOLSAR
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* Call to Action */}
           <div className="bg-[#1A1A1A] rounded-xl p-8 text-center">
@@ -465,10 +552,10 @@ const Tienda: React.FC = () => {
                   </button>
                   <button
                     onClick={() => {
-                      // Aquí iría la lógica de checkout
-                      alert('¡Gracias por tu compra! (Funcionalidad de pago pendiente)');
+                      setPurchasedPhotos(prev => [...prev, ...cart]);
                       clearCart();
                       setIsCartOpen(false);
+                      alert('¡Gracias por tu compra!');
                     }}
                     className="flex-1 px-4 py-3 text-white font-semibold rounded-lg transition-colors"
                     style={{ backgroundColor: '#B8860B' }}
@@ -492,6 +579,35 @@ const Tienda: React.FC = () => {
         isOpen={isMobileMenuOpen} 
         onClose={() => setIsMobileMenuOpen(false)} 
       />
+
+      {/* Refund Confirmation Modal */}
+      {isRefundModalOpen && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+          <div className="bg-[#1A1A1A] rounded-xl max-w-md w-full border border-[#2A2A2A] p-8 text-center">
+            <h2 className="text-2xl font-bold text-[#EAEAEA] mb-4">¿Estás seguro?</h2>
+            <p className="text-[#B3B3B3] mb-8">
+              Si confirmas, esta foto volverá a estar disponible en la tienda y se eliminará de tus compras.
+            </p>
+            <div className="flex space-x-4">
+              <button
+                onClick={() => {
+                  setIsRefundModalOpen(false);
+                  setPhotoToRefund(null);
+                }}
+                className="flex-1 px-4 py-3 border border-[#B3B3B3] text-[#B3B3B3] font-semibold rounded-lg hover:bg-[#2A2A2A] transition-colors"
+              >
+                CANCELAR
+              </button>
+              <button
+                onClick={confirmRefund}
+                className="flex-1 px-4 py-3 bg-[#C70039] text-white font-semibold rounded-lg hover:bg-red-700 transition-colors"
+              >
+                CONFIRMAR REEMBOLSO
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
