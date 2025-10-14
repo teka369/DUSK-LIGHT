@@ -146,13 +146,13 @@ const Principal: React.FC = () => {
             <p className="text-fluid-lg text-[#B3B3B3] mb-fluid-md max-w-2xl mx-auto xl:mx-0">
               Fotografía profesional y artística que transforma momentos en recuerdos eternos.
             </p>
-            <div className="flex flex-col sm:flex-row gap-fluid-md justify-center xl:justify-start">
-              <button className="px-fluid-md py-fluid-sm rounded-lg font-semibold transition-all duration-300 text-white transform hover:scale-105" style={{ backgroundColor: '#B8860B' }} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#C70039'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#B8860B'}>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center xl:justify-start">
+              <Link to="/sobre-nosotros" className="px-fluid-md py-fluid-sm rounded-lg font-semibold transition-all duration-300 text-white transform hover:scale-105" style={{ backgroundColor: '#B8860B' }} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#C70039'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#B8860B'}>
                 SOBRE NOSOTROS
-              </button>
-              <button className="px-fluid-md py-fluid-sm rounded-lg font-semibold transition-all duration-300 text-white transform hover:scale-105" style={{ backgroundColor: '#B8860B' }} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#C70039'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#B8860B'}>
+              </Link>
+              <Link to="/tienda" className="px-fluid-md py-fluid-sm rounded-lg font-semibold transition-all duration-300 text-white transform hover:scale-105" style={{ backgroundColor: '#B8860B' }} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#C70039'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#B8860B'}>
                 IR A LA TIENDA
-              </button>
+              </Link>
             </div>
           </div>
           <div className="w-full xl:w-1/2">
@@ -199,9 +199,9 @@ const Principal: React.FC = () => {
             <p className="text-fluid-base text-[#B3B3B3] mb-fluid-md leading-relaxed max-w-2xl mx-auto xl:mx-0">
               Un colectivo de fotógrafos dedicados a capturar momentos únicos. Cruzamos cada mirada, cada gesto y cada historia con pasión y profesionalismo.
             </p>
-            <button className="px-fluid-md py-fluid-sm rounded-lg font-semibold transition-all duration-300 text-white transform hover:scale-105" style={{ backgroundColor: '#B8860B' }} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#C70039'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#B8860B'}>
+            <Link to="/contacto" className="px-fluid-md py-fluid-sm rounded-lg font-semibold transition-all duration-300 text-white transform hover:scale-105" style={{ backgroundColor: '#B8860B' }} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#C70039'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#B8860B'}>
               CONÓCENOS MÁS
-            </button>
+            </Link>
           </div>
         </div>
       </section>
@@ -376,7 +376,7 @@ const Principal: React.FC = () => {
           <p className="text-fluid-base sm:text-fluid-lg text-[#B3B3B3] mb-fluid-md max-w-3xl mx-auto">
             Cada proyecto es una oportunidad de contar una historia única. Descubre más de nuestro trabajo y contáctanos para tu próximo proyecto.
           </p>
-        <div className="flex flex-col sm:flex-row gap-fluid-md justify-center">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/portafolio">
               <button className="px-fluid-lg py-fluid-sm bg-[#B8860B] hover:bg-[#C70039] text-white rounded-2xl font-bold text-fluid-base sm:text-fluid-lg transition-all duration-300 transform hover:scale-105 shadow-xl">
                 VER PORTAFOLIO COMPLETO
@@ -529,9 +529,9 @@ const Principal: React.FC = () => {
                 </div>
                 <div>
                   <h3 className="text-[#EAEAEA] font-semibold text-lg">Instagram</h3>
-                  <p className="text-[#B3B3B3]">@dusklight_photography</p>
+                  <p className="text-[#B3B3B3]">studiodusklight</p>
                   <a
-                    href="https://instagram.com/dusklight_photography"
+                    href="$$$"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-[#B8860B] hover:text-[#C70039] transition-colors text-sm"
@@ -550,9 +550,9 @@ const Principal: React.FC = () => {
                 </div>
                 <div>
                   <h3 className="text-[#EAEAEA] font-semibold text-lg">Correo</h3>
-                  <p className="text-[#B3B3B3]">info@dusklight.com</p>
+                  <p className="text-[#B3B3B3]">studiodusklight@gmail.com</p>
                   <a
-                    href="mailto:info@dusklight.com"
+                    href="mailto:studiodusklight@gmail.com"
                     className="text-[#B8860B] hover:text-[#C70039] transition-colors text-sm"
                   >
                     Enviar correo

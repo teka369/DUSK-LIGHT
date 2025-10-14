@@ -4,6 +4,17 @@ import { Nav } from '../components/nav';
 import Footer from '../components/Footer';
 import MobileMenu from '../components/MobileMenu';
 
+interface Photo {
+  id: number;
+  title: string;
+  category: string;
+  price: number;
+  image: string;
+  description: string;
+  size: string;
+  format: string;
+}
+
 const Tienda: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState('Todas');
   const [searchTerm, setSearchTerm] = useState('');
@@ -16,6 +27,8 @@ const Tienda: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isRefundModalOpen, setIsRefundModalOpen] = useState(false);
   const [photoToRefund, setPhotoToRefund] = useState<number | null>(null);
+  const [isEditing, setIsEditing] = useState(false);
+  const [editedPhotos, setEditedPhotos] = useState<Photo[]>([]);
 
   useEffect(() => {
     localStorage.setItem('purchasedPhotos', JSON.stringify(purchasedPhotos));
@@ -23,7 +36,7 @@ const Tienda: React.FC = () => {
 
   const categories = ['Todas', 'Retratos', 'Paisajes', 'Moda', 'Eventos', 'Arte'];
 
-  const photos = [
+  const initialPhotos: Photo[] = [
     {
       id: 1,
       title: 'Retrato Elegante',
@@ -146,7 +159,38 @@ const Tienda: React.FC = () => {
     }
   ];
 
-  const filteredPhotos = photos.filter(photo => {
+  const [photos, setPhotos] = useState<Photo[]>(() => {
+    const savedPhotos = localStorage.getItem('storePhotos');
+    return savedPhotos ? JSON.parse(savedPhotos) : initialPhotos;
+  });
+
+  useEffect(() => {
+    localStorage.setItem('storePhotos', JSON.stringify(photos));
+  }, [photos]);
+
+  const handleEditToggle = () => {
+    if (isEditing) {
+      setPhotos(editedPhotos);
+    } else {
+      setEditedPhotos(JSON.parse(JSON.stringify(photos))); // Deep copy
+    }
+    setIsEditing(!isEditing);
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, photoId: number) => {
+    const { name, value } = e.target;
+    const newEditedPhotos = editedPhotos.map(p => {
+      if (p.id === photoId) {
+        return { ...p, [name]: name === 'price' ? Number(value) : value };
+      }
+      return p;
+    });
+    setEditedPhotos(newEditedPhotos);
+  };
+
+  const itemsToDisplay = isEditing ? editedPhotos : photos;
+
+  const filteredPhotos = itemsToDisplay.filter(photo => {
     if (purchasedPhotos.includes(photo.id)) {
       return false;
     }
@@ -250,7 +294,7 @@ const Tienda: React.FC = () => {
       <main className="px-8 py-16">
         <div className="max-w-7xl mx-auto">
           {/* Page Title */}
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 relative">
             <h1 className="text-5xl font-bold text-[#EAEAEA] mb-4">
               TIENDA DE FOTOGRAFÍAS
             </h1>
@@ -259,6 +303,12 @@ const Tienda: React.FC = () => {
               Descubre nuestra colección de fotografías artísticas disponibles para compra. 
               Cada imagen está lista para descargar en alta resolución.
             </p>
+            <button 
+              onClick={handleEditToggle}
+              className="absolute top-0 right-0 p-2 text-xs bg-gray-700 hover:bg-gray-600 text-white rounded-lg font-semibold transition-all duration-300 opacity-50 hover:opacity-100"
+            >
+              {isEditing ? 'GUARDAR' : 'EDITAR'}
+            </button>
           </div>
 
           {/* Search and Filters */}
@@ -318,64 +368,90 @@ const Tienda: React.FC = () => {
                 key={photo.id}
                 className="group relative bg-[#1A1A1A] rounded-xl overflow-hidden hover:bg-[#2A2A2A] transition-all duration-300 border border-[#2A2A2A] hover:border-[#B8860B]/30"
               >
-                {/* Image */}
-                <div className="aspect-square relative overflow-hidden">
-                  <img 
-                    src={photo.image} 
-                    alt={photo.title}
-                    className="w-full h-full object-cover filter grayscale brightness-75 contrast-110 group-hover:brightness-90 transition-all duration-500"
-                    style={{
-                      maskImage: 'radial-gradient(circle 85% at center, black 0%, transparent 75%)',
-                      WebkitMaskImage: 'radial-gradient(circle 85% at center, black 0%, transparent 75%)'
-                    }}
-                    onContextMenu={(e) => e.preventDefault()}
-                  />
-                  
-                  {/* Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  
-                  {/* Price Badge */}
-                  <div className="absolute top-4 right-4">
-                    <span className="bg-[#B8860B] text-white px-3 py-1 rounded-full text-sm font-bold">
-                      ${photo.price}
-                    </span>
+                {isEditing ? (
+                  <div className="flex flex-col h-full">
+                    <div className="aspect-square relative overflow-hidden">
+                      <img 
+                        src={photo.image} 
+                        alt={photo.title}
+                        className="w-full h-full object-cover filter grayscale brightness-50"
+                      />
+                    </div>
+                    <div className="p-4 space-y-2">
+                      <input type="text" name="title" value={photo.title} onChange={(e) => handleChange(e, photo.id)} className="w-full bg-[#333] text-white p-2 rounded font-bold" />
+                      <textarea name="description" value={photo.description} onChange={(e) => handleChange(e, photo.id)} className="w-full bg-[#333] text-white p-2 rounded text-sm" rows={2} />
+                      <div className="flex gap-2">
+                        <input type="number" name="price" value={photo.price} onChange={(e) => handleChange(e, photo.id)} className="w-1/2 bg-[#333] text-white p-2 rounded" />
+                        <input type="text" name="category" value={photo.category} onChange={(e) => handleChange(e, photo.id)} className="w-1/2 bg-[#333] text-white p-2 rounded text-xs" />
+                      </div>
+                      <div className="flex gap-2">
+                        <input type="text" name="size" value={photo.size} onChange={(e) => handleChange(e, photo.id)} className="w-1/2 bg-[#333] text-white p-2 rounded text-xs" />
+                        <input type="text" name="format" value={photo.format} onChange={(e) => handleChange(e, photo.id)} className="w-1/2 bg-[#333] text-white p-2 rounded text-xs" />
+                      </div>
+                    </div>
                   </div>
+                ) : (
+                  <>
+                    {/* Image */}
+                    <div className="aspect-square relative overflow-hidden">
+                      <img 
+                        src={photo.image} 
+                        alt={photo.title}
+                        className="w-full h-full object-cover filter grayscale brightness-75 contrast-110 group-hover:brightness-90 transition-all duration-500"
+                        style={{
+                          maskImage: 'radial-gradient(circle 85% at center, black 0%, transparent 75%)',
+                          WebkitMaskImage: 'radial-gradient(circle 85% at center, black 0%, transparent 75%)'
+                        }}
+                        onContextMenu={(e) => e.preventDefault()}
+                      />
+                      
+                      {/* Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                      
+                      {/* Price Badge */}
+                      <div className="absolute top-4 right-4">
+                        <span className="bg-[#B8860B] text-white px-3 py-1 rounded-full text-sm font-bold">
+                          ${photo.price}
+                        </span>
+                      </div>
 
-                  {/* Category Badge */}
-                  <div className="absolute top-4 left-4">
-                    <span className="bg-[#C70039] text-white px-3 py-1 rounded-full text-xs font-semibold">
-                      {photo.category}
-                    </span>
-                  </div>
-                </div>
+                      {/* Category Badge */}
+                      <div className="absolute top-4 left-4">
+                        <span className="bg-[#C70039] text-white px-3 py-1 rounded-full text-xs font-semibold">
+                          {photo.category}
+                        </span>
+                      </div>
+                    </div>
 
-                {/* Content */}
-                <div className="p-6">
-                  <h3 className="text-lg font-bold text-[#EAEAEA] mb-2 group-hover:text-[#B8860B] transition-colors duration-300">
-                    {photo.title}
-                  </h3>
-                  
-                  <p className="text-[#B3B3B3] text-sm mb-4">
-                    {photo.description}
-                  </p>
+                    {/* Content */}
+                    <div className="p-6">
+                      <h3 className="text-lg font-bold text-[#EAEAEA] mb-2 group-hover:text-[#B8860B] transition-colors duration-300">
+                        {photo.title}
+                      </h3>
+                      
+                      <p className="text-[#B3B3B3] text-sm mb-4">
+                        {photo.description}
+                      </p>
 
-                  <div className="flex items-center justify-between text-xs text-[#B3B3B3] mb-4">
-                    <span>{photo.size}</span>
-                    <span>{photo.format}</span>
-                  </div>
+                      <div className="flex items-center justify-between text-xs text-[#B3B3B3] mb-4">
+                        <span>{photo.size}</span>
+                        <span>{photo.format}</span>
+                      </div>
 
-                  {/* Add to Cart Button */}
-                  <button
-                    onClick={() => isInCart(photo.id) ? removeFromCart(photo.id) : addToCart(photo.id)}
-                    className={`w-full px-4 py-3 font-semibold rounded-lg transition-all duration-300 ${
-                      isInCart(photo.id)
-                        ? 'bg-[#C70039] text-white'
-                        : 'bg-[#B8860B] text-white hover:bg-[#C70039]'
-                    }`}
-                  >
-                    {isInCart(photo.id) ? 'QUITAR DEL CARRITO' : 'AGREGAR AL CARRITO'}
-                  </button>
-                </div>
+                      {/* Add to Cart Button */}
+                      <button
+                        onClick={() => isInCart(photo.id) ? removeFromCart(photo.id) : addToCart(photo.id)}
+                        className={`w-full px-4 py-3 font-semibold rounded-lg transition-all duration-300 ${
+                          isInCart(photo.id)
+                            ? 'bg-[#C70039] text-white'
+                            : 'bg-[#B8860B] text-white hover:bg-[#C70039]'
+                        }`}
+                      >
+                        {isInCart(photo.id) ? 'QUITAR DEL CARRITO' : 'AGREGAR AL CARRITO'}
+                      </button>
+                    </div>
+                  </>
+                )}
               </div>
             ))}
           </div>
@@ -446,14 +522,15 @@ const Tienda: React.FC = () => {
               Contáctanos para solicitar fotografías personalizadas o para conocer más sobre nuestros servicios de fotografía profesional.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button 
+              <Link 
+                to="/contacto"
                 className="px-8 py-3 text-white font-semibold rounded-lg transition-colors"
                 style={{ backgroundColor: '#B8860B' }}
                 onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#C70039'}
                 onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#B8860B'}
               >
                 CONTACTAR
-              </button>
+              </Link>
               <Link 
                 to="/servicios"
                 className="px-8 py-3 border border-[#B8860B] text-[#B8860B] font-semibold rounded-lg hover:bg-[#B8860B] hover:text-white transition-colors"

@@ -66,9 +66,9 @@ const Contacto: React.FC = () => {
                   </div>
                   <div>
                     <h3 className="text-[#EAEAEA] font-semibold text-lg">Instagram</h3>
-                    <p className="text-[#B3B3B3]">@dusklight_photography</p>
+                    <p className="text-[#B3B3B3]">studiodusklight</p>
                     <a 
-                      href="https://instagram.com/dusklight_photography" 
+                      href="$$$" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="text-[#B8860B] hover:text-[#C70039] transition-colors text-sm"
@@ -87,9 +87,9 @@ const Contacto: React.FC = () => {
                   </div>
                   <div>
                     <h3 className="text-[#EAEAEA] font-semibold text-lg">Correo</h3>
-                    <p className="text-[#B3B3B3]">info@dusklight.com</p>
+                    <p className="text-[#B3B3B3]">studiodusklight@gmail.com</p>
                     <a 
-                      href="mailto:info@dusklight.com"
+                      href="mailto:studiodusklight@gmail.com"
                       className="text-[#B8860B] hover:text-[#C70039] transition-colors text-sm"
                     >
                       Enviar correo
