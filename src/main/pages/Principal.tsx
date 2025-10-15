@@ -220,7 +220,7 @@ const Principal: React.FC = () => {
           </p>
           <button 
             onClick={handlePortfolioEditToggle}
-            className="absolute top-0 right-0 p-2 text-xs bg-gray-700 hover:bg-gray-600 text-white rounded-lg font-semibold transition-all duration-300 opacity-50 hover:opacity-100"
+            className="absolute top-2 right-2 sm:top-3 sm:right-3 lg:top-4 lg:right-4 p-fluid-xs text-fluid-xs sm:text-fluid-sm bg-gray-700 hover:bg-gray-600 text-white rounded-lg font-semibold transition-all duration-300 opacity-50 hover:opacity-100 z-10"
           >
             {isEditingPortfolio ? 'GUARDAR' : 'EDITAR'}
           </button>
@@ -405,7 +405,7 @@ const Principal: React.FC = () => {
           </p>
           <button 
             onClick={handleEditToggle}
-            className="absolute top-0 right-0 p-2 text-xs bg-gray-700 hover:bg-gray-600 text-white rounded-lg font-semibold transition-all duration-300 opacity-50 hover:opacity-100"
+            className="absolute top-2 right-2 sm:top-3 sm:right-3 lg:top-4 lg:right-4 p-fluid-xs text-fluid-xs sm:text-fluid-sm bg-gray-700 hover:bg-gray-600 text-white rounded-lg font-semibold transition-all duration-300 opacity-50 hover:opacity-100 z-10"
           >
             {isEditing ? 'GUARDAR' : 'EDITAR'}
           </button>
