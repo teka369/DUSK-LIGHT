@@ -7,6 +7,17 @@ import { Nav } from '../components/nav';
 const SobreNosotros: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  const teamImages = [
+    '/DUSK-LIGHT/el equipo/WhatsApp Image 2025-10-11 at 13.45.43 (1).jpeg',
+    '/DUSK-LIGHT/el equipo/WhatsApp Image 2025-10-11 at 13.45.43.jpeg',
+    '/DUSK-LIGHT/el equipo/WhatsApp Image 2025-10-11 at 13.45.44 (1).jpeg',
+    '/DUSK-LIGHT/el equipo/WhatsApp Image 2025-10-11 at 13.45.44 (2).jpeg',
+    '/DUSK-LIGHT/el equipo/WhatsApp Image 2025-10-11 at 13.45.44.jpeg',
+    '/DUSK-LIGHT/el equipo/WhatsApp Image 2025-10-11 at 13.45.45 (1).jpeg',
+    '/DUSK-LIGHT/el equipo/WhatsApp Image 2025-10-11 at 13.45.45 (2).jpeg',
+    '/DUSK-LIGHT/el equipo/WhatsApp Image 2025-10-11 at 13.45.45.jpeg',
+  ];
+
   return (
     <div className="min-h-screen text-[#EAEAEA]" style={{ backgroundColor: '#0D0D0D' }}>
       {/* Header */}
@@ -41,21 +52,16 @@ const SobreNosotros: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             {/* Image Column */}
             <div className="order-2 lg:order-1">
-              <div className="relative">
-                <div className="w-full h-96 lg:h-[500px] rounded-xl overflow-hidden" style={{ backgroundColor: '#1A1A1A' }}>
-                  <img 
-                    src="/DUSK-LIGHT/paisaje.png" 
-                    alt="Equipo Dusk Light" 
-                    className="w-full h-full object-cover filter grayscale brightness-75 contrast-110"
-                    style={{
-                      maskImage: 'radial-gradient(ellipse 80% 80% at center, black 0%, transparent 70%)',
-                      WebkitMaskImage: 'radial-gradient(ellipse 80% 80% at center, black 0%, transparent 70%)'
-                    }}
-                  />
-                </div>
-                {/* Decorative elements */}
-                <div className="absolute -top-4 -left-4 w-24 h-24 border-2 border-[#B8860B] rounded-lg opacity-30"></div>
-                <div className="absolute -bottom-4 -right-4 w-16 h-16 border-2 border-[#C70039] rounded-lg opacity-30"></div>
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                {teamImages.map((image, index) => (
+                  <div key={index} className="w-full h-64 rounded-xl overflow-hidden" style={{ backgroundColor: '#1A1A1A' }}>
+                    <img 
+                      src={image}
+                      alt={`Equipo Dusk Light ${index + 1}`}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                ))}
               </div>
             </div>
 

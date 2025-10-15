@@ -42,7 +42,7 @@ const Tienda: React.FC = () => {
       title: 'Retrato Elegante',
       category: 'Retratos',
       price: 25,
-      image: '/DUSK-LIGHT/fotos.jpeg',
+      image: '/DUSK-LIGHT/tienda/auto.png',
       description: 'Fotografía de retrato profesional en blanco y negro',
       size: '3000x2000px',
       format: 'JPG'
@@ -52,7 +52,7 @@ const Tienda: React.FC = () => {
       title: 'Paisaje Montañoso',
       category: 'Paisajes',
       price: 30,
-      image: '/DUSK-LIGHT/paisaje.png',
+      image: '/DUSK-LIGHT/tienda/WhatsApp Image 2025-10-11 at 15.33.58.jpeg',
       description: 'Impresionante vista de montañas al atardecer',
       size: '4000x3000px',
       format: 'JPG'
@@ -62,7 +62,7 @@ const Tienda: React.FC = () => {
       title: 'Moda Editorial',
       category: 'Moda',
       price: 35,
-      image: '/DUSK-LIGHT/auto.png',
+      image: '/DUSK-LIGHT/tienda/WhatsApp Image 2025-10-11 at 15.33.59 (1).jpeg',
       description: 'Sesión de moda editorial con iluminación profesional',
       size: '3500x2500px',
       format: 'JPG'
@@ -72,7 +72,7 @@ const Tienda: React.FC = () => {
       title: 'Boda Romántica',
       category: 'Eventos',
       price: 40,
-      image: '/DUSK-LIGHT/fotos.jpeg',
+      image: '/DUSK-LIGHT/tienda/WhatsApp Image 2025-10-11 at 15.33.59 (2).jpeg',
       description: 'Momento íntimo de una ceremonia de boda',
       size: '3000x2000px',
       format: 'JPG'
@@ -82,7 +82,7 @@ const Tienda: React.FC = () => {
       title: 'Arte Abstracto',
       category: 'Arte',
       price: 45,
-      image: '/DUSK-LIGHT/paisaje.png',
+      image: '/DUSK-LIGHT/tienda/WhatsApp Image 2025-10-11 at 15.33.59 (3).jpeg',
       description: 'Composición artística abstracta en blanco y negro',
       size: '4000x4000px',
       format: 'JPG'
@@ -92,7 +92,7 @@ const Tienda: React.FC = () => {
       title: 'Retrato Familiar',
       category: 'Retratos',
       price: 28,
-      image: '/DUSK-LIGHT/auto.png',
+      image: '/DUSK-LIGHT/tienda/WhatsApp Image 2025-10-11 at 15.33.59.jpeg',
       description: 'Sesión familiar cálida y emotiva',
       size: '3000x2000px',
       format: 'JPG'
@@ -102,7 +102,7 @@ const Tienda: React.FC = () => {
       title: 'Paisaje Urbano',
       category: 'Paisajes',
       price: 32,
-      image: '/DUSK-LIGHT/fotos.jpeg',
+      image: '/DUSK-LIGHT/tienda/WhatsApp Image 2025-10-11 at 15.34.00 (1).jpeg',
       description: 'Arquitectura urbana en contraste de luces',
       size: '4000x3000px',
       format: 'JPG'
@@ -112,7 +112,7 @@ const Tienda: React.FC = () => {
       title: 'Fashion Week',
       category: 'Moda',
       price: 38,
-      image: '/DUSK-LIGHT/paisaje.png',
+      image: '/DUSK-LIGHT/tienda/WhatsApp Image 2025-10-11 at 15.34.00 (2).jpeg',
       description: 'Cobertura de pasarela de moda',
       size: '3500x2500px',
       format: 'JPG'
@@ -122,7 +122,7 @@ const Tienda: React.FC = () => {
       title: 'Evento Corporativo',
       category: 'Eventos',
       price: 42,
-      image: '/DUSK-LIGHT/auto.png',
+      image: '/DUSK-LIGHT/tienda/WhatsApp Image 2025-10-11 at 15.34.00 (3).jpeg',
       description: 'Fotografía de evento empresarial profesional',
       size: '3000x2000px',
       format: 'JPG'
@@ -132,7 +132,7 @@ const Tienda: React.FC = () => {
       title: 'Arte Conceptual',
       category: 'Arte',
       price: 50,
-      image: '/DUSK-LIGHT/fotos.jpeg',
+      image: '/DUSK-LIGHT/tienda/WhatsApp Image 2025-10-11 at 15.34.00 (4).jpeg',
       description: 'Fotografía conceptual con elementos surrealistas',
       size: '4000x4000px',
       format: 'JPG'
@@ -142,7 +142,7 @@ const Tienda: React.FC = () => {
       title: 'Retrato Artístico',
       category: 'Retratos',
       price: 33,
-      image: '/DUSK-LIGHT/paisaje.png',
+      image: '/DUSK-LIGHT/tienda/WhatsApp Image 2025-10-11 at 15.34.01 (1).jpeg',
       description: 'Retrato artístico con iluminación dramática',
       size: '3000x2000px',
       format: 'JPG'
@@ -152,7 +152,7 @@ const Tienda: React.FC = () => {
       title: 'Paisaje Nocturno',
       category: 'Paisajes',
       price: 36,
-      image: '/DUSK-LIGHT/auto.png',
+      image: '/DUSK-LIGHT/tienda/WhatsApp Image 2025-10-11 at 15.34.01.jpeg',
       description: 'Paisaje urbano nocturno con luces de la ciudad',
       size: '4000x3000px',
       format: 'JPG'
@@ -160,12 +160,12 @@ const Tienda: React.FC = () => {
   ];
 
   const [photos, setPhotos] = useState<Photo[]>(() => {
-    const savedPhotos = localStorage.getItem('storePhotos');
+    const savedPhotos = localStorage.getItem('storePhotos_v2');
     return savedPhotos ? JSON.parse(savedPhotos) : initialPhotos;
   });
 
   useEffect(() => {
-    localStorage.setItem('storePhotos', JSON.stringify(photos));
+    localStorage.setItem('storePhotos_v2', JSON.stringify(photos));
   }, [photos]);
 
   const handleEditToggle = () => {
@@ -374,7 +374,7 @@ const Tienda: React.FC = () => {
                       <img 
                         src={photo.image} 
                         alt={photo.title}
-                        className="w-full h-full object-cover filter grayscale brightness-50"
+                        className="w-full h-full object-cover filter brightness-50"
                       />
                     </div>
                     <div className="p-4 space-y-2">
@@ -397,7 +397,7 @@ const Tienda: React.FC = () => {
                       <img 
                         src={photo.image} 
                         alt={photo.title}
-                        className="w-full h-full object-cover filter grayscale brightness-75 contrast-110 group-hover:brightness-90 transition-all duration-500"
+                        className="w-full h-full object-cover filter brightness-75 contrast-110 group-hover:brightness-90 transition-all duration-500"
                         style={{
                           maskImage: 'radial-gradient(circle 85% at center, black 0%, transparent 75%)',
                           WebkitMaskImage: 'radial-gradient(circle 85% at center, black 0%, transparent 75%)'
@@ -480,7 +480,7 @@ const Tienda: React.FC = () => {
                       <img 
                         src={photo.image} 
                         alt={photo.title}
-                        className="w-full h-full object-cover filter grayscale brightness-75 contrast-110"
+                        className="w-full h-full object-cover filter brightness-75 contrast-110"
                         style={{
                           maskImage: 'radial-gradient(circle 85% at center, black 0%, transparent 75%)',
                           WebkitMaskImage: 'radial-gradient(circle 85% at center, black 0%, transparent 75%)'
@@ -578,7 +578,7 @@ const Tienda: React.FC = () => {
                         <img 
                           src={photo?.image} 
                           alt={photo?.title}
-                          className="w-full h-full object-cover filter grayscale brightness-75 contrast-110"
+                          className="w-full h-full object-cover filter brightness-75 contrast-110"
                           style={{
                             maskImage: 'radial-gradient(circle 85% at center, black 0%, transparent 75%)',
                             WebkitMaskImage: 'radial-gradient(circle 85% at center, black 0%, transparent 75%)'

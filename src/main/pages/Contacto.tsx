@@ -68,7 +68,7 @@ const Contacto: React.FC = () => {
                     <h3 className="text-[#EAEAEA] font-semibold text-lg">Instagram</h3>
                     <p className="text-[#B3B3B3]">studiodusklight</p>
                     <a 
-                      href="$$$" 
+                      href="https://www.instagram.com/studiodusklight/" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="text-[#B8860B] hover:text-[#C70039] transition-colors text-sm"

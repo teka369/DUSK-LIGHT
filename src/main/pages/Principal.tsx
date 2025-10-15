@@ -37,17 +37,17 @@ const Principal: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const initialProducts: Product[] = [
-    { id: 1, title: 'Sesión Retrato Individual', description: 'Fotografía profesional para redes sociales, LinkedIn o uso personal. Incluye 20 fotos editadas.', price: '$50', image: '/DUSK-LIGHT/fotos.jpeg', popular: true },
-    { id: 2, title: 'Sesión Pareja', description: 'Fotografía romántica para parejas. Incluye 30 fotos editadas y álbum digital.', price: '$80', image: '/DUSK-LIGHT/auto.png' },
-    { id: 3, title: 'Sesión Familiar', description: 'Fotografía familiar completa. Hasta 6 personas. Incluye 40 fotos editadas.', price: '$120', image: '/DUSK-LIGHT/paisaje.png', isNew: true },
-    { id: 4, title: 'Pack Redes Sociales', description: '50 fotos optimizadas para Instagram, Facebook y LinkedIn. Perfecto para influencers.', price: '$150', image: '/DUSK-LIGHT/fotos.jpeg' },
-    { id: 5, title: 'Evento Corporativo', description: 'Cobertura completa de eventos empresariales. Incluye edición y entrega en 48h.', price: '$200', image: '/DUSK-LIGHT/auto.png' },
-    { id: 6, title: 'Sesión Artística', description: 'Fotografía conceptual y artística. Incluye 25 fotos editadas profesionalmente.', price: '$180', image: '/DUSK-LIGHT/paisaje.png', isPremium: true },
+    { id: 1, title: 'Sesión Retrato Individual', description: 'Fotografía profesional para redes sociales, LinkedIn o uso personal. Incluye 20 fotos editadas.', price: '$50', image: '/DUSK-LIGHT/tienda/auto.png', popular: true },
+    { id: 2, title: 'Sesión Pareja', description: 'Fotografía romántica para parejas. Incluye 30 fotos editadas y álbum digital.', price: '$80', image: '/DUSK-LIGHT/tienda/WhatsApp Image 2025-10-11 at 15.33.58.jpeg' },
+    { id: 3, title: 'Sesión Familiar', description: 'Fotografía familiar completa. Hasta 6 personas. Incluye 40 fotos editadas.', price: '$120', image: '/DUSK-LIGHT/tienda/WhatsApp Image 2025-10-11 at 15.33.59 (1).jpeg', isNew: true },
+    { id: 4, title: 'Pack Redes Sociales', description: '50 fotos optimizadas para Instagram, Facebook y LinkedIn. Perfecto para influencers.', price: '$150', image: '/DUSK-LIGHT/tienda/WhatsApp Image 2025-10-11 at 15.33.59 (2).jpeg' },
+    { id: 5, title: 'Evento Corporativo', description: 'Cobertura completa de eventos empresariales. Incluye edición y entrega en 48h.', price: '$200', image: '/DUSK-LIGHT/tienda/WhatsApp Image 2025-10-11 at 15.33.59 (3).jpeg' },
+    { id: 6, title: 'Sesión Artística', description: 'Fotografía conceptual y artística. Incluye 25 fotos editadas profesionalmente.', price: '$180', image: '/DUSK-LIGHT/tienda/WhatsApp Image 2025-10-11 at 15.33.59.jpeg', isPremium: true },
   ];
 
   // Aplicación de la interfaz Product[] al estado
   const [products, setProducts] = useState<Product[]>(() => {
-    const savedProducts = localStorage.getItem('storeProductsPrincipal');
+    const savedProducts = localStorage.getItem('storeProductsPrincipal_v2');
     return savedProducts ? JSON.parse(savedProducts) : initialProducts;
   });
 
@@ -56,16 +56,14 @@ const Principal: React.FC = () => {
   const [editedProducts, setEditedProducts] = useState<Product[]>([]);
 
   const initialPortfolioItems: PortfolioItem[] = [
-    { id: 1, src: "/DUSK-LIGHT/fotos.jpeg", alt: "Retrato Artístico", title: "Retrato Artístico", category: "Fotografía de Retrato", description: "Capturamos la esencia única de cada persona con un enfoque artístico y profesional", tags: ["Retrato", "Artístico", "Profesional"] },
-    { id: 2, src: "/DUSK-LIGHT/auto.png", alt: "Editorial de Moda", title: "Editorial de Moda", category: "Fotografía de Moda", description: "Visiones frescas y estilos modernos que definen las tendencias actuales", tags: ["Moda", "Editorial", "Tendencias"] },
-    { id: 3, src: "/DUSK-LIGHT/paisaje.png", alt: "Paisaje Natural", title: "Paisajes Naturales", category: "Fotografía de Paisaje", description: "Paisajes hipnotizantes que conectan con la naturaleza en su forma más pura", tags: ["Paisaje", "Naturaleza", "Arte"] },
-    { id: 4, src: "/DUSK-LIGHT/fotos.jpeg", alt: "Producto Estilizado", title: "Fotografía de Producto", category: "Fotografía Comercial", description: "Cada detalle, cada textura, una historia visual que vende", tags: ["Producto", "Comercial", "Marketing"] },
-    { id: 5, src: "/DUSK-LIGHT/auto.png", alt: "Evento Exclusivo", title: "Eventos Exclusivos", category: "Fotografía de Eventos", description: "Eventos vibrantes, emociones capturadas en instantes únicos", tags: ["Eventos", "Exclusivo", "Emociones"] }
+    { id: 1, src: "/DUSK-LIGHT/portafolio/portafolio.jpeg", alt: "Retrato Artístico", title: "Retrato Artístico", category: "Fotografía de Retrato", description: "Capturamos la esencia única de cada persona con un enfoque artístico y profesional", tags: ["Retrato", "Artístico", "Profesional"] },
+    { id: 2, src: "/DUSK-LIGHT/portafolio/portafolio1.1.jpeg", alt: "Editorial de Moda", title: "Editorial de Moda", category: "Fotografía de Moda", description: "Visiones frescas y estilos modernos que definen las tendencias actuales", tags: ["Moda", "Editorial", "Tendencias"] },
+    { id: 3, src: "/DUSK-LIGHT/portafolio/portafolio2.jpeg", alt: "Paisaje Natural", title: "Paisajes Naturales", category: "Fotografía de Paisaje", description: "Paisajes hipnotizantes que conectan con la naturaleza en su forma más pura", tags: ["Paisaje", "Naturaleza", "Arte"] }
   ];
 
   // Aplicación de la interfaz PortfolioItem[] al estado
   const [portfolioItems, setPortfolioItems] = useState<PortfolioItem[]>(() => {
-    const saved = localStorage.getItem('portfolioItems');
+    const saved = localStorage.getItem('portfolioItems_v2');
     return saved ? JSON.parse(saved) : initialPortfolioItems;
   });
 
@@ -74,11 +72,11 @@ const Principal: React.FC = () => {
   const [editedPortfolioItems, setEditedPortfolioItems] = useState<PortfolioItem[]>([]);
 
   useEffect(() => {
-    localStorage.setItem('storeProductsPrincipal', JSON.stringify(products));
+    localStorage.setItem('storeProductsPrincipal_v2', JSON.stringify(products));
   }, [products]);
 
   useEffect(() => {
-    localStorage.setItem('portfolioItems', JSON.stringify(portfolioItems));
+    localStorage.setItem('portfolioItems_v2', JSON.stringify(portfolioItems));
   }, [portfolioItems]);
 
   const handleEditToggle = () => {
@@ -158,9 +156,9 @@ const Principal: React.FC = () => {
           <div className="w-full xl:w-1/2">
             <div className="relative w-full h-[300px] sm:h-[400px] md:h-[450px] lg:h-[500px] xl:h-[600px] 2xl:h-[700px] flex items-center justify-center">
               <img 
-                src="/DUSK-LIGHT/auto.png" 
+                src="/DUSK-LIGHT/decoracion para la pagina/decoracion3.jpeg" 
                 alt="Fotografía profesional Dusk Light" 
-                className="w-full h-full object-cover filter grayscale brightness-75 contrast-110 rounded-2xl"
+                className="w-full h-full object-cover filter brightness-75 contrast-110 rounded-2xl"
                 style={{
                   filter: 'grayscale(100%) brightness(0.75) contrast(1.1)',
                   maskImage: 'radial-gradient(ellipse 75% 75% at center, black 0%, transparent 68%)',
@@ -181,7 +179,7 @@ const Principal: React.FC = () => {
           <div className="w-full xl:w-1/2 order-2 xl:order-1">
             <div className="relative w-full h-[300px] sm:h-[400px] md:h-[450px] lg:h-[500px] xl:h-[600px] 2xl:h-[700px] flex items-center justify-center">
               <img 
-                src="/DUSK-LIGHT/paisaje.png" 
+                src="/DUSK-LIGHT/decoracion para la pagina/decoracion2.jpeg" 
                 alt="Equipo Dusk Light trabajando" 
                 className="w-full h-full object-cover filter grayscale brightness-75 contrast-110 rounded-2xl"
                 style={{
@@ -199,9 +197,11 @@ const Principal: React.FC = () => {
             <p className="text-fluid-base text-[#B3B3B3] mb-fluid-md leading-relaxed max-w-2xl mx-auto xl:mx-0">
               Un colectivo de fotógrafos dedicados a capturar momentos únicos. Cruzamos cada mirada, cada gesto y cada historia con pasión y profesionalismo.
             </p>
-            <Link to="/contacto" className="px-fluid-md py-fluid-sm rounded-lg font-semibold transition-all duration-300 text-white transform hover:scale-105" style={{ backgroundColor: '#B8860B' }} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#C70039'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#B8860B'}>
-              CONÓCENOS MÁS
-            </Link>
+            <div className="flex justify-center xl:justify-start">
+              <Link to="/contacto" className="px-fluid-md py-fluid-sm rounded-lg font-semibold transition-all duration-300 text-white transform hover:scale-105" style={{ backgroundColor: '#B8860B' }} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#C70039'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#B8860B'}>
+                CONÓCENOS MÁS
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -529,11 +529,11 @@ const Principal: React.FC = () => {
                 </div>
                 <div>
                   <h3 className="text-[#EAEAEA] font-semibold text-lg">Instagram</h3>
-                  <p className="text-[#B3B3B3]">studiodusklight</p>
+                   <p className="text-[#B3B3B3]">studiodusklight</p>
                   <a
-                    href="$$$"
+                    href="https://www.instagram.com/studiodusklight/"
                     target="_blank"
-                    rel="noopener noreferrer"
+                    rel= "noopener noreferrer"
                     className="text-[#B8860B] hover:text-[#C70039] transition-colors text-sm"
                   >
                     Seguir en Instagram

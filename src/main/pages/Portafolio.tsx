@@ -19,90 +19,27 @@ const Portafolio: React.FC = () => {
       id: 1,
       title: 'Sesión Retrato Individual',
       category: 'Retratos',
-      image: '/DUSK-LIGHT/fotos.jpeg',
+      image: '/DUSK-LIGHT/portafolio/portafolio.jpeg',
       description: 'Fotografía profesional de retrato'
     },
     {
       id: 2,
       title: 'Sesión de Moda',
       category: 'Moda',
-      image: '/DUSK-LIGHT/auto.png',
+      image: '/DUSK-LIGHT/portafolio/portafolio1.1.jpeg',
       description: 'Fotografía de moda editorial'
     },
     {
       id: 3,
       title: 'Boda Elegante',
       category: 'Eventos',
-      image: '/DUSK-LIGHT/paisaje.png',
+      image: '/DUSK-LIGHT/portafolio/portafolio2.jpeg',
       description: 'Cobertura de boda completa'
-    },
-    {
-      id: 4,
-      title: 'Producto Artesanal',
-      category: 'Producto',
-      image: '/DUSK-LIGHT/fotos.jpeg',
-      description: 'Fotografía de producto profesional'
-    },
-    {
-      id: 5,
-      title: 'Retrato en Blanco y Negro',
-      category: 'Blanco y negro',
-      image: '/DUSK-LIGHT/auto.png',
-      description: 'Fotografía artística monocromática'
-    },
-    {
-      id: 6,
-      title: 'Sesión Pareja',
-      category: 'Retratos',
-      image: '/DUSK-LIGHT/paisaje.png',
-      description: 'Fotografía romántica de pareja'
-    },
-    {
-      id: 7,
-      title: 'Editorial de Moda',
-      category: 'Moda',
-      image: '/DUSK-LIGHT/fotos.jpeg',
-      description: 'Sesión editorial de alta moda'
-    },
-    {
-      id: 8,
-      title: 'Evento Corporativo',
-      category: 'Eventos',
-      image: '/DUSK-LIGHT/auto.png',
-      description: 'Cobertura de evento empresarial'
-    },
-    {
-      id: 9,
-      title: 'Producto Tecnológico',
-      category: 'Producto',
-      image: '/DUSK-LIGHT/paisaje.png',
-      description: 'Fotografía de producto tecnológico'
-    },
-    {
-      id: 10,
-      title: 'Arte en Blanco y Negro',
-      category: 'Blanco y negro',
-      image: '/DUSK-LIGHT/fotos.jpeg',
-      description: 'Fotografía artística conceptual'
-    },
-    {
-      id: 11,
-      title: 'Retrato Familiar',
-      category: 'Retratos',
-      image: '/DUSK-LIGHT/auto.png',
-      description: 'Sesión familiar completa'
-    },
-    {
-      id: 12,
-      title: 'Fashion Week',
-      category: 'Moda',
-      image: '/DUSK-LIGHT/paisaje.png',
-      description: 'Cobertura de semana de la moda'
     }
   ];
 
   const [portfolioItems, setPortfolioItems] = useState<PortfolioItem[]>(() => {
-    const savedPortfolioItems = localStorage.getItem('portfolioItemsPage');
+    const savedPortfolioItems = localStorage.getItem('portfolioItemsPage_v2');
     return savedPortfolioItems ? JSON.parse(savedPortfolioItems) : initialPortfolioItems;
   });
 
@@ -110,7 +47,7 @@ const Portafolio: React.FC = () => {
   const [editedPortfolioItems, setEditedPortfolioItems] = useState<PortfolioItem[]>([]);
 
   useEffect(() => {
-    localStorage.setItem('portfolioItemsPage', JSON.stringify(portfolioItems));
+    localStorage.setItem('portfolioItemsPage_v2', JSON.stringify(portfolioItems));
   }, [portfolioItems]);
 
   const handleEditToggle = () => {
@@ -186,7 +123,7 @@ const Portafolio: React.FC = () => {
                     <img 
                       src={item.image} 
                       alt={item.title}
-                      className="w-full h-full object-cover filter grayscale brightness-50"
+                      className="w-full h-full object-cover filter brightness-50"
                     />
                     <div className="absolute inset-0 bg-black/50 flex flex-col h-full space-y-2 p-4">
                       <input
@@ -219,7 +156,7 @@ const Portafolio: React.FC = () => {
                       <img 
                         src={item.image} 
                         alt={item.title}
-                        className="w-full h-full object-cover filter grayscale brightness-75 contrast-110 group-hover:brightness-90 transition-all duration-700"
+                        className="w-full h-full object-cover filter brightness-75 contrast-110 group-hover:brightness-90 transition-all duration-700"
                         style={{
                           maskImage: 'radial-gradient(circle 85% at center, black 0%, transparent 75%)',
                           WebkitMaskImage: 'radial-gradient(circle 85% at center, black 0%, transparent 75%)'
