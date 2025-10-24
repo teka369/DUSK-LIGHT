@@ -14,15 +14,15 @@ const PaqueteArtistica: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const images: Image[] = [
-    { src: '/DUSK-LIGHT/public/mascota.jpeg', alt: 'Imagen 1' },
-    { src: '/DUSK-LIGHT/public/sesion mascota/WhatsApp Image 2025-10-23 at 15.31.34 (1).jpeg', alt: 'Sesion Mascota 1' },
-    { src: '/DUSK-LIGHT/public/sesion mascota/WhatsApp Image 2025-10-23 at 15.31.34.jpeg', alt: 'Sesion Mascota 2' },
-    { src: '/DUSK-LIGHT/public/sesion mascota/WhatsApp Image 2025-10-23 at 15.31.35 (1).jpeg', alt: 'Sesion Mascota 3' },
-    { src: '/DUSK-LIGHT/public/sesion mascota/WhatsApp Image 2025-10-23 at 15.31.35 (2).jpeg', alt: 'Sesion Mascota 4' },
-    { src: '/DUSK-LIGHT/public/sesion mascota/WhatsApp Image 2025-10-23 at 15.31.35 (3).jpeg', alt: 'Sesion Mascota 5' },
-    { src: '/DUSK-LIGHT/public/sesion mascota/WhatsApp Image 2025-10-23 at 15.31.35.jpeg', alt: 'Sesion Mascota 6' },
-    { src: '/DUSK-LIGHT/public/sesion mascota2/WhatsApp Image 2025-10-23 at 16.29.25.jpeg', alt: 'Sesion Mascota 7' },
-    { src: '/DUSK-LIGHT/public/sesion mascota2/WhatsApp Image 2025-10-23 at 16.29.26.jpeg', alt: 'Sesion Mascota 8' }
+    { src: '/DUSK-LIGHT/mascota.jpeg', alt: 'Imagen 1' },
+    { src: '/DUSK-LIGHT/sesion mascota/WhatsApp Image 2025-10-23 at 15.31.34 (1).jpeg', alt: 'Sesion Mascota 1' },
+    { src: '/DUSK-LIGHT/sesion mascota/WhatsApp Image 2025-10-23 at 15.31.34.jpeg', alt: 'Sesion Mascota 2' },
+    { src: '/DUSK-LIGHT/sesion mascota/WhatsApp Image 2025-10-23 at 15.31.35 (1).jpeg', alt: 'Sesion Mascota 3' },
+    { src: '/DUSK-LIGHT/sesion mascota/WhatsApp Image 2025-10-23 at 15.31.35 (2).jpeg', alt: 'Sesion Mascota 4' },
+    { src: '/DUSK-LIGHT/sesion mascota/WhatsApp Image 2025-10-23 at 15.31.35 (3).jpeg', alt: 'Sesion Mascota 5' },
+    { src: '/DUSK-LIGHT/sesion mascota/WhatsApp Image 2025-10-23 at 15.31.35.jpeg', alt: 'Sesion Mascota 6' },
+    { src: '/DUSK-LIGHT/sesion mascota2/WhatsApp Image 2025-10-23 at 16.29.25.jpeg', alt: 'Sesion Mascota 7' },
+    { src: '/DUSK-LIGHT/sesion mascota2/WhatsApp Image 2025-10-23 at 16.29.26.jpeg', alt: 'Sesion Mascota 8' }
   ];
 
   const openLightbox = (src: string) => {
