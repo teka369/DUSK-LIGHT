@@ -8,11 +8,11 @@ const SobreNosotros: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const teamImages = [
-    '/DUSK-LIGHT/public/individual/WhatsApp Image 2025-10-23 at 15.43.22 (1).jpeg',
-    '/DUSK-LIGHT/public/individual/individual.jpeg',
-    '/DUSK-LIGHT/public/individual/individual1.jpeg',
-    '/DUSK-LIGHT/public/individual/individual2.jpeg',
-    '/DUSK-LIGHT/public/individual/individual3.jpeg',
+    '/DUSK-LIGHT/individual/WhatsApp Image 2025-10-23 at 15.43.22 (1).jpeg',
+    '/DUSK-LIGHT/individual/individual.jpeg',
+    '/DUSK-LIGHT/individual/individual1.jpeg',
+    '/DUSK-LIGHT/individual/individual2.jpeg',
+    '/DUSK-LIGHT/individual/individual3.jpeg',
   ];
 
   return (

@@ -37,17 +37,17 @@ const Principal: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const products: Product[] = [
-    { id: 1, title: 'Sesión Retrato Individual', description: 'Fotografía profesional para redes sociales, LinkedIn o uso personal. Incluye 20 fotos editadas.', price: '$50', image: '/DUSK-LIGHT/sesion individual/WhatsApp Image 2025-10-23 at 15.43.22.jpeg', popular: true },
+    { id: 1, title: 'Sesión Retrato Individual', description: 'Fotografía profesional para redes sociales, LinkedIn o uso personal. Incluye 20 fotos editadas.', price: '$50', image: '/DUSK-LIGHT/portafolio/portafolio2.jpeg', popular: true },
     { id: 2, title: 'Sesión Pareja', description: 'Fotografía romántica para parejas. Incluye 30 fotos editadas y álbum digital.', price: '$80', image: '/DUSK-LIGHT/sesion pareja/WhatsApp Image 2025-10-23 at 15.38.22.jpeg' },
     { id: 3, title: 'Sesión Familiar', description: 'Fotografía familiar completa. Hasta 6 personas. Incluye 40 fotos editadas.', price: '$120', image: '/DUSK-LIGHT/sesion familiar/WhatsApp Image 2025-10-23 at 15.39.26 (1).jpeg', isNew: true },
     { id: 4, title: 'Pack Redes Sociales', description: '50 fotos optimizadas para Instagram, Facebook y LinkedIn. Perfecto para influencers.', price: '$150', image: '/DUSK-LIGHT/sesion redes sociales/WhatsApp Image 2025-10-23 at 15.48.53.jpeg' },
-    { id: 5, title: 'Sesión Vehiculos', description: 'Fotografía automovilistica personalizada. Incluye edición y entrega en 48h.', price: '$200', image: '/DUSK-LIGHT/sesion vehiculo/WhatsApp Image 2025-10-23 at 11.50.52.jpeg' },
+    { id: 5, title: 'Sesión Vehiculos', description: 'Fotografía automovilistica personalizada. Incluye edición y entrega en 48h.', price: '$200', image: '/DUSK-LIGHT/tienda/auto.png' },
     { id: 6, title: 'Sesión Animales', description: 'Fotografía de tus mascotas y naturaleza. Incluye 25 fotos editadas profesionalmente.', price: '$180', image: '/DUSK-LIGHT/mascota.jpeg', isPremium: true },
   ];
 
   const portfolioItems: PortfolioItem[] = [
     { id: 1, src: "/DUSK-LIGHT/portafolio/portafolio.jpeg", alt: "Retrato Artístico", title: "Retrato Artístico", category: "Fotografía de Retrato", description: "Capturamos la esencia única de cada persona con un enfoque artístico y profesional", tags: ["Retrato", "Artístico", "Profesional"] },
-    { id: 2, src: "/DUSK-LIGHT/portafolio/portafolio2.jpeg", alt: "Editorial de Moda", title: "Editorial de Moda", category: "Fotografía de Moda", description: "Visiones frescas y estilos modernos que definen las tendencias actuales", tags: ["Moda", "Editorial", "Tendencias"] },
+    { id: 2, src: "/DUSK-LIGHT/sesion individual/WhatsApp Image 2025-10-23 at 15.43.22.jpeg", alt: "Editorial de Moda", title: "Editorial de Moda", category: "Fotografía de Moda", description: "Visiones frescas y estilos modernos que definen las tendencias actuales", tags: ["Moda", "Editorial", "Tendencias"] },
     { id: 3, src: "/DUSK-LIGHT/portafolio/portafolio1.1.jpeg", alt: "Paisaje Natural", title: "Paisajes Naturales", category: "Fotografía de Paisaje", description: "Paisajes hipnotizantes que conectan con la naturaleza en su forma más pura", tags: ["Paisaje", "Naturaleza", "Arte"] }
   ];
 

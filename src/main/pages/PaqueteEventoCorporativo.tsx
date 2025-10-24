@@ -14,10 +14,10 @@ const PaqueteEventoCorporativo: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const images: Image[] = [
-    { src: '/DUSK-LIGHT/public/sesion vehiculo/WhatsApp Image 2025-10-23 at 11.50.52.jpeg', alt: 'Imagen 1' },
-    { src: '/DUSK-LIGHT/public/sesion vehiculo/WhatsApp Image 2025-10-23 at 11.50.53 (1).jpeg', alt: 'Imagen 2' },
-    { src: '/DUSK-LIGHT/public/sesion vehiculo/WhatsApp Image 2025-10-23 at 11.50.53.jpeg', alt: 'Imagen 3' },
-    { src: '/DUSK-LIGHT/public/sesion vehiculo/WhatsApp Image 2025-10-23 at 11.50.54.jpeg', alt: 'Imagen 4' },
+    { src: '/DUSK-LIGHT/sesion vehiculo/WhatsApp Image 2025-10-23 at 11.50.52.jpeg', alt: 'Imagen 1' },
+    { src: '/DUSK-LIGHT/sesion vehiculo/WhatsApp Image 2025-10-23 at 11.50.53 (1).jpeg', alt: 'Imagen 2' },
+    { src: '/DUSK-LIGHT/sesion vehiculo/WhatsApp Image 2025-10-23 at 11.50.53.jpeg', alt: 'Imagen 3' },
+    { src: '/DUSK-LIGHT/sesion vehiculo/WhatsApp Image 2025-10-23 at 11.50.54.jpeg', alt: 'Imagen 4' },
     
   ];
 
