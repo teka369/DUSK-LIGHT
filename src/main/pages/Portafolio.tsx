@@ -13,6 +13,15 @@ interface PortfolioItem {
 
 const Portafolio: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
+  const openLightbox = (src: string) => {
+    setSelectedImage(src);
+  };
+
+  const closeLightbox = () => {
+    setSelectedImage(null);
+  };
 
   const initialPortfolioItems: PortfolioItem[] = [
     {
@@ -117,6 +126,7 @@ const Portafolio: React.FC = () => {
               <div
                 key={item.id}
                 className="group relative aspect-square overflow-hidden rounded-xl cursor-pointer bg-[#1A1A1A] hover:bg-[#2A2A2A] transition-all duration-500 border border-[#2A2A2A] hover:border-[#B8860B]/30 transform hover:scale-105"
+              onClick={() => !isEditing && openLightbox(item.image)}
               >
                 {isEditing ? (
                   <div className="relative w-full h-full">
@@ -152,16 +162,16 @@ const Portafolio: React.FC = () => {
                 ) : (
                   <>
                     {/* Image */}
-                    <div className="relative w-full h-full">
-                      <img 
-                        src={item.image} 
-                        alt={item.title}
-                        className="w-full h-full object-cover filter brightness-75 contrast-110 group-hover:brightness-90 transition-all duration-700"
-                        style={{
-                          maskImage: 'radial-gradient(circle 85% at center, black 0%, transparent 75%)',
-                          WebkitMaskImage: 'radial-gradient(circle 85% at center, black 0%, transparent 75%)'
-                        }}
-                      />
+                  <div className="relative w-full h-full">
+                    <img 
+                      src={item.image} 
+                      alt={item.title}
+                      className="w-full h-full object-cover filter brightness-75 contrast-110 group-hover:brightness-90 transition-all duration-700"
+                      style={{
+                        maskImage: 'radial-gradient(circle 85% at center, black 0%, transparent 75%)',
+                        WebkitMaskImage: 'radial-gradient(circle 85% at center, black 0%, transparent 75%)'
+                      }}
+                    />
                       
                       {/* Overlay */}
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -208,6 +218,23 @@ const Portafolio: React.FC = () => {
         isOpen={isMobileMenuOpen} 
         onClose={() => setIsMobileMenuOpen(false)} 
       />
+
+      {selectedImage && (
+        <div 
+          className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50"
+          onClick={closeLightbox}
+        >
+          <div className="relative max-w-full max-h-full p-4" onClick={(e) => e.stopPropagation()}>
+            <img src={selectedImage} alt="Expanded Image" className="max-w-full max-h-full object-contain rounded-lg" style={{ maxHeight: '90vh', maxWidth: '90vw' }} />
+            <button 
+              onClick={closeLightbox}
+              className="absolute top-4 right-4 text-white text-3xl font-bold bg-gray-800 rounded-full w-10 h-10 flex items-center justify-center"
+            >
+              &times;
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

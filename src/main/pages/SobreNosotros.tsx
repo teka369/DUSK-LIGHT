@@ -6,13 +6,21 @@ import { Nav } from '../components/nav';
 
 const SobreNosotros: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
+  const openLightbox = (src: string) => {
+    setSelectedImage(src);
+  };
+
+  const closeLightbox = () => {
+    setSelectedImage(null);
+  };
 
   const teamImages = [
     '/DUSK-LIGHT/individual/WhatsApp Image 2025-10-23 at 15.43.22 (1).jpeg',
     '/DUSK-LIGHT/individual/individual.jpeg',
     '/DUSK-LIGHT/individual/individual1.jpeg',
     '/DUSK-LIGHT/individual/individual2.jpeg',
-    '/DUSK-LIGHT/individual/individual3.jpeg',
   ];
 
   return (
@@ -51,11 +59,12 @@ const SobreNosotros: React.FC = () => {
             <div className="order-2 lg:order-1">
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                 {teamImages.map((image, index) => (
-                  <div key={index} className="w-full h-64 rounded-xl overflow-hidden" style={{ backgroundColor: '#1A1A1A' }}>
+                  <div key={index} className="w-full h-64 rounded-xl overflow-hidden cursor-pointer" style={{ backgroundColor: '#1A1A1A' }}>
                     <img 
                       src={image}
                       alt={`Equipo Dusk Light ${index + 1}`}
                       className="w-full h-full object-cover"
+                      onClick={() => openLightbox(image)}
                     />
                   </div>
                 ))}
@@ -158,6 +167,23 @@ const SobreNosotros: React.FC = () => {
         isOpen={isMobileMenuOpen} 
         onClose={() => setIsMobileMenuOpen(false)} 
       />
+
+      {selectedImage && (
+        <div 
+          className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50"
+          onClick={closeLightbox}
+        >
+          <div className="relative max-w-full max-h-full p-4" onClick={(e) => e.stopPropagation()}>
+            <img src={selectedImage} alt="Expanded Image" className="max-w-full max-h-full object-contain rounded-lg" style={{ maxHeight: '90vh', maxWidth: '90vw' }} />
+            <button 
+              onClick={closeLightbox}
+              className="absolute top-4 right-4 text-white text-3xl font-bold bg-gray-800 rounded-full w-10 h-10 flex items-center justify-center"
+            >
+              &times;
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

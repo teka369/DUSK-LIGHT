@@ -24,7 +24,11 @@ const PaqueteRetratoIndividual: React.FC = () => {
     { src: '/DUSK-LIGHT/sesion individual/WhatsApp Image 2025-10-23 at 15.43.21 (1).jpeg', alt: 'Imagen 8' },
     { src: '/DUSK-LIGHT/sesion individual/WhatsApp Image 2025-10-23 at 15.43.21 (2).jpeg', alt: 'Imagen 9' },
     { src: '/DUSK-LIGHT/sesion individual/WhatsApp Image 2025-10-23 at 15.43.21 (3).jpeg', alt: 'Imagen 10' },
-    { src: '/DUSK-LIGHT/sesion individual/WhatsApp Image 2025-10-23 at 15.43.22.jpeg', alt: 'Imagen 11' }
+    { src: '/DUSK-LIGHT/sesion individual/WhatsApp Image 2025-10-23 at 15.43.22.jpeg', alt: 'Imagen 11' },
+    { src: '/DUSK-LIGHT/individual/individual3.jpeg', alt: 'Imagen 12' },
+    { src: '/DUSK-LIGHT/portafolio/portafolio2.jpeg', alt: 'Imagen 13' },
+    { src: '/DUSK-LIGHT/individual/individual2.jpeg', alt: 'Imagen 14' }
+
   ];
 
   const openLightbox = (src: string) => {
