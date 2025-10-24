@@ -36,85 +36,20 @@ interface PortfolioItem {
 const Principal: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const initialProducts: Product[] = [
-    { id: 1, title: 'Sesión Retrato Individual', description: 'Fotografía profesional para redes sociales, LinkedIn o uso personal. Incluye 20 fotos editadas.', price: '$50', image: '/DUSK-LIGHT/tienda/auto.png', popular: true },
-    { id: 2, title: 'Sesión Pareja', description: 'Fotografía romántica para parejas. Incluye 30 fotos editadas y álbum digital.', price: '$80', image: '/DUSK-LIGHT/tienda/WhatsApp Image 2025-10-11 at 15.33.58.jpeg' },
-    { id: 3, title: 'Sesión Familiar', description: 'Fotografía familiar completa. Hasta 6 personas. Incluye 40 fotos editadas.', price: '$120', image: '/DUSK-LIGHT/tienda/WhatsApp Image 2025-10-11 at 15.33.59 (1).jpeg', isNew: true },
-    { id: 4, title: 'Pack Redes Sociales', description: '50 fotos optimizadas para Instagram, Facebook y LinkedIn. Perfecto para influencers.', price: '$150', image: '/DUSK-LIGHT/tienda/WhatsApp Image 2025-10-11 at 15.33.59 (2).jpeg' },
-    { id: 5, title: 'Evento Corporativo', description: 'Cobertura completa de eventos empresariales. Incluye edición y entrega en 48h.', price: '$200', image: '/DUSK-LIGHT/tienda/WhatsApp Image 2025-10-11 at 15.33.59 (3).jpeg' },
-    { id: 6, title: 'Sesión Artística', description: 'Fotografía conceptual y artística. Incluye 25 fotos editadas profesionalmente.', price: '$180', image: '/DUSK-LIGHT/tienda/WhatsApp Image 2025-10-11 at 15.33.59.jpeg', isPremium: true },
+  const products: Product[] = [
+    { id: 1, title: 'Sesión Retrato Individual', description: 'Fotografía profesional para redes sociales, LinkedIn o uso personal. Incluye 20 fotos editadas.', price: '$50', image: '/DUSK-LIGHT/sesion individual/WhatsApp Image 2025-10-23 at 15.43.22.jpeg', popular: true },
+    { id: 2, title: 'Sesión Pareja', description: 'Fotografía romántica para parejas. Incluye 30 fotos editadas y álbum digital.', price: '$80', image: '/DUSK-LIGHT/sesion pareja/WhatsApp Image 2025-10-23 at 15.38.22.jpeg' },
+    { id: 3, title: 'Sesión Familiar', description: 'Fotografía familiar completa. Hasta 6 personas. Incluye 40 fotos editadas.', price: '$120', image: '/DUSK-LIGHT/sesion familiar/WhatsApp Image 2025-10-23 at 15.39.26 (1).jpeg', isNew: true },
+    { id: 4, title: 'Pack Redes Sociales', description: '50 fotos optimizadas para Instagram, Facebook y LinkedIn. Perfecto para influencers.', price: '$150', image: '/DUSK-LIGHT/sesion redes sociales/WhatsApp Image 2025-10-23 at 15.48.53.jpeg' },
+    { id: 5, title: 'Sesión Vehiculos', description: 'Fotografía automovilistica personalizada. Incluye edición y entrega en 48h.', price: '$200', image: '/DUSK-LIGHT/sesion vehiculo/WhatsApp Image 2025-10-23 at 11.50.52.jpeg' },
+    { id: 6, title: 'Sesión Animales', description: 'Fotografía de tus mascotas y naturaleza. Incluye 25 fotos editadas profesionalmente.', price: '$180', image: '/DUSK-LIGHT/mascota.jpeg', isPremium: true },
   ];
 
-  // Aplicación de la interfaz Product[] al estado
-  const [products, setProducts] = useState<Product[]>(() => {
-    const savedProducts = localStorage.getItem('storeProductsPrincipal_v2');
-    return savedProducts ? JSON.parse(savedProducts) : initialProducts;
-  });
-
-  const [isEditing, setIsEditing] = useState(false);
-  // Aplicación de la interfaz Product[] al estado
-  const [editedProducts, setEditedProducts] = useState<Product[]>([]);
-
-  const initialPortfolioItems: PortfolioItem[] = [
+  const portfolioItems: PortfolioItem[] = [
     { id: 1, src: "/DUSK-LIGHT/portafolio/portafolio.jpeg", alt: "Retrato Artístico", title: "Retrato Artístico", category: "Fotografía de Retrato", description: "Capturamos la esencia única de cada persona con un enfoque artístico y profesional", tags: ["Retrato", "Artístico", "Profesional"] },
-    { id: 2, src: "/DUSK-LIGHT/portafolio/portafolio1.1.jpeg", alt: "Editorial de Moda", title: "Editorial de Moda", category: "Fotografía de Moda", description: "Visiones frescas y estilos modernos que definen las tendencias actuales", tags: ["Moda", "Editorial", "Tendencias"] },
-    { id: 3, src: "/DUSK-LIGHT/portafolio/portafolio2.jpeg", alt: "Paisaje Natural", title: "Paisajes Naturales", category: "Fotografía de Paisaje", description: "Paisajes hipnotizantes que conectan con la naturaleza en su forma más pura", tags: ["Paisaje", "Naturaleza", "Arte"] }
+    { id: 2, src: "/DUSK-LIGHT/portafolio/portafolio2.jpeg", alt: "Editorial de Moda", title: "Editorial de Moda", category: "Fotografía de Moda", description: "Visiones frescas y estilos modernos que definen las tendencias actuales", tags: ["Moda", "Editorial", "Tendencias"] },
+    { id: 3, src: "/DUSK-LIGHT/portafolio/portafolio1.1.jpeg", alt: "Paisaje Natural", title: "Paisajes Naturales", category: "Fotografía de Paisaje", description: "Paisajes hipnotizantes que conectan con la naturaleza en su forma más pura", tags: ["Paisaje", "Naturaleza", "Arte"] }
   ];
-
-  // Aplicación de la interfaz PortfolioItem[] al estado
-  const [portfolioItems, setPortfolioItems] = useState<PortfolioItem[]>(() => {
-    const saved = localStorage.getItem('portfolioItems_v2');
-    return saved ? JSON.parse(saved) : initialPortfolioItems;
-  });
-
-  const [isEditingPortfolio, setIsEditingPortfolio] = useState(false);
-  // Aplicación de la interfaz PortfolioItem[] al estado
-  const [editedPortfolioItems, setEditedPortfolioItems] = useState<PortfolioItem[]>([]);
-
-  useEffect(() => {
-    localStorage.setItem('storeProductsPrincipal_v2', JSON.stringify(products));
-  }, [products]);
-
-  useEffect(() => {
-    localStorage.setItem('portfolioItems_v2', JSON.stringify(portfolioItems));
-  }, [portfolioItems]);
-
-  const handleEditToggle = () => {
-    if (isEditing) {
-      setProducts(editedProducts);
-    } else {
-      setEditedProducts(JSON.parse(JSON.stringify(products))); // Deep copy
-    }
-    setIsEditing(!isEditing);
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, productId: number) => {
-    const { name, value } = e.target;
-    setEditedProducts(editedProducts.map(p => (p.id === productId ? { ...p, [name]: value } : p)));
-  };
-
-  const handlePortfolioEditToggle = () => {
-    if (isEditingPortfolio) {
-      setPortfolioItems(editedPortfolioItems);
-    } else {
-      setEditedPortfolioItems(JSON.parse(JSON.stringify(portfolioItems))); // Deep copy
-    }
-    setIsEditingPortfolio(!isEditingPortfolio);
-  };
-
-  const handlePortfolioChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, itemId: number) => {
-    const { name, value } = e.target;
-    setEditedPortfolioItems(editedPortfolioItems.map(item => 
-      item.id === itemId ? { ...item, [name]: value } : item
-    ));
-  };
-
-  const handlePortfolioTagsChange = (e: React.ChangeEvent<HTMLInputElement>, itemId: number) => {
-    const { value } = e.target;
-    setEditedPortfolioItems(editedPortfolioItems.map(item => 
-      item.id === itemId ? { ...item, tags: value.split(',').map(tag => tag.trim()) } : item
-    ));
-  };
 
   return (
     <div className="min-h-screen text-[#EAEAEA]" style={{ backgroundColor: '#0D0D0D' }}>
@@ -218,32 +153,25 @@ const Principal: React.FC = () => {
           <p className="text-fluid-lg text-[#B3B3B3] max-w-3xl mx-auto">
             Descubre nuestra colección de trabajos que capturan la esencia de cada momento
           </p>
-          <button 
-            onClick={handlePortfolioEditToggle}
-            className="absolute top-2 right-2 sm:top-3 sm:right-3 lg:top-4 lg:right-4 p-fluid-xs text-fluid-xs sm:text-fluid-sm bg-gray-700 hover:bg-gray-600 text-white rounded-lg font-semibold transition-all duration-300 opacity-50 hover:opacity-100 z-10"
-          >
-            {isEditingPortfolio ? 'GUARDAR' : 'EDITAR'}
-          </button>
         </div>
         
           {/* Carrusel Principal */}
           <div className="relative">
           {(() => {
-              const itemsToDisplay = isEditingPortfolio ? editedPortfolioItems : portfolioItems;
               const [currentIndex, setCurrentIndex] = React.useState(0);
               const [isAutoPlaying, setIsAutoPlaying] = React.useState(true);
             const intervalRef = React.useRef<number | null>(null);
 
             React.useEffect(() => {
-                if (isAutoPlaying && !isEditingPortfolio) {
+                if (isAutoPlaying) {
               intervalRef.current = window.setInterval(() => {
-                    setCurrentIndex((prev) => (prev + 1) % itemsToDisplay.length);
+                    setCurrentIndex((prev) => (prev + 1) % portfolioItems.length);
                   }, 5000);
                 }
               return () => {
                 if (intervalRef.current) clearInterval(intervalRef.current);
                 };
-              }, [isAutoPlaying, itemsToDisplay.length, isEditingPortfolio]);
+              }, [isAutoPlaying, portfolioItems.length]);
 
               const goToSlide = (index: number) => {
                 setCurrentIndex(index);
@@ -252,13 +180,13 @@ const Principal: React.FC = () => {
               };
 
               const goToPrevious = () => {
-                setCurrentIndex((prev) => (prev - 1 + itemsToDisplay.length) % itemsToDisplay.length);
+                setCurrentIndex((prev) => (prev - 1 + portfolioItems.length) % portfolioItems.length);
                 setIsAutoPlaying(false);
                 setTimeout(() => setIsAutoPlaying(true), 10000);
               };
 
               const goToNext = () => {
-                setCurrentIndex((prev) => (prev + 1) % itemsToDisplay.length);
+                setCurrentIndex((prev) => (prev + 1) % portfolioItems.length);
                 setIsAutoPlaying(false);
                 setTimeout(() => setIsAutoPlaying(true), 10000);
               };
@@ -269,8 +197,7 @@ const Principal: React.FC = () => {
                   <div className="relative h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] xl:h-[450px] 2xl:h-[500px] 3xl:h-[600px] rounded-2xl lg:rounded-3xl overflow-hidden shadow-2xl">
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10"></div>
                     
-                    {/* AQUI SE RESUELVE EL ERROR TS(7006) CON PortfolioItem */}
-                    {itemsToDisplay.map((item: PortfolioItem, index: number) => (
+                    {portfolioItems.map((item: PortfolioItem, index: number) => (
                       <img
                         key={item.id}
                         src={item.src}
@@ -289,36 +216,25 @@ const Principal: React.FC = () => {
                     {/* Contenido Superpuesto */}
                     <div className="absolute bottom-0 left-0 right-0 p-fluid-sm lg:p-fluid-md z-20">
                       <div className="max-w-4xl">
-                        {isEditingPortfolio ? (
-                          <div className="space-y-2 bg-black/50 p-4 rounded-lg">
-                            <input type="text" name="category" value={itemsToDisplay[currentIndex].category} onChange={(e) => handlePortfolioChange(e, itemsToDisplay[currentIndex].id)} className="w-full bg-[#2A2A2A] text-white p-1 rounded text-fluid-xs font-semibold" />
-                            <input type="text" name="title" value={itemsToDisplay[currentIndex].title} onChange={(e) => handlePortfolioChange(e, itemsToDisplay[currentIndex].id)} className="w-full bg-[#2A2A2A] text-white p-1 rounded text-fluid-xl sm:text-fluid-2xl lg:text-fluid-3xl font-bold" />
-                            <textarea name="description" value={itemsToDisplay[currentIndex].description} onChange={(e) => handlePortfolioChange(e, itemsToDisplay[currentIndex].id)} className="w-full bg-[#2A2A2A] text-white p-1 rounded text-fluid-sm sm:text-fluid-base" rows={2} />
-                            <input type="text" name="tags" value={itemsToDisplay[currentIndex].tags.join(', ')} onChange={(e) => handlePortfolioTagsChange(e, itemsToDisplay[currentIndex].id)} className="w-full bg-[#2A2A2A] text-white p-1 rounded text-fluid-xs" />
-                          </div>
-                        ) : (
-                          <>
-                            <div className="inline-block bg-[#B8860B]/90 backdrop-blur-sm px-fluid-xs py-1 rounded-full text-fluid-xs font-semibold text-white mb-fluid-xs">
-                              {itemsToDisplay[currentIndex].category}
-                            </div>
-                            <h3 className="text-fluid-xl sm:text-fluid-2xl lg:text-fluid-3xl font-bold text-white mb-fluid-xs">
-                              {itemsToDisplay[currentIndex].title}
-                            </h3>
-                            <p className="text-fluid-sm sm:text-fluid-base lg:text-fluid-lg text-white/90 mb-fluid-sm max-w-2xl line-clamp-2">
-                              {itemsToDisplay[currentIndex].description}
-                            </p>
-                            <div className="flex flex-wrap gap-1 sm:gap-2 mb-fluid-sm">
-                              {itemsToDisplay[currentIndex].tags.map((tag: string, tagIndex: number) => (
-                                <span
-                                  key={tagIndex}
-                                  className="bg-white/20 backdrop-blur-sm px-2 py-1 rounded-full text-fluid-xs text-white/90"
-                                >
-                                  #{tag}
-                                </span>
-                              ))}
-                            </div>
-                          </>
-                        )}
+                        <div className="inline-block bg-[#B8860B]/90 backdrop-blur-sm px-fluid-xs py-1 rounded-full text-fluid-xs font-semibold text-white mb-fluid-xs">
+                          {portfolioItems[currentIndex].category}
+                        </div>
+                        <h3 className="text-fluid-xl sm:text-fluid-2xl lg:text-fluid-3xl font-bold text-white mb-fluid-xs">
+                          {portfolioItems[currentIndex].title}
+                        </h3>
+                        <p className="text-fluid-sm sm:text-fluid-base lg:text-fluid-lg text-white/90 mb-fluid-sm max-w-2xl line-clamp-2">
+                          {portfolioItems[currentIndex].description}
+                        </p>
+                        <div className="flex flex-wrap gap-1 sm:gap-2 mb-fluid-sm">
+                          {portfolioItems[currentIndex].tags.map((tag: string, tagIndex: number) => (
+                            <span
+                              key={tagIndex}
+                              className="bg-white/20 backdrop-blur-sm px-2 py-1 rounded-full text-fluid-xs text-white/90"
+                            >
+                              #{tag}
+                            </span>
+                          ))}
+                        </div>
                       </div>
                     </div>
 
@@ -345,7 +261,7 @@ const Principal: React.FC = () => {
 
                   {/* Indicadores */}
                   <div className="flex justify-center mt-fluid-sm space-x-2 sm:space-x-3">
-                    {itemsToDisplay.map((_: PortfolioItem, index: number) => (
+                    {portfolioItems.map((_: PortfolioItem, index: number) => (
                       <button
                         key={index}
                         onClick={() => goToSlide(index)}
@@ -361,7 +277,7 @@ const Principal: React.FC = () => {
 
                   {/* Contador */}
                   <div className="absolute top-2 sm:top-4 right-2 sm:right-4 bg-black/50 backdrop-blur-sm text-white px-2 sm:px-3 py-1 rounded-full text-fluid-xs font-semibold z-30">
-                    {currentIndex + 1} / {itemsToDisplay.length}
+                    {currentIndex + 1} / {portfolioItems.length}
                   </div>
                 </div>
               );
@@ -394,27 +310,20 @@ const Principal: React.FC = () => {
       {/* Divider */}
       <div className="w-full h-px" style={{ backgroundColor: '#1A1A1A' }}></div>
 
-      {/* Store Section */}
+      {/* Packages Section */}
       <section className="container-fluid py-fluid-lg">
         <div className="text-center mb-fluid-xl relative">
           <h2 className="text-fluid-3xl sm:text-fluid-4xl lg:text-fluid-5xl font-bold text-[#EAEAEA] mb-fluid-sm">
-            NUESTRA TIENDA
+            NUESTROS PAQUETES
           </h2>
           <p className="text-fluid-base sm:text-fluid-lg text-[#B3B3B3] max-w-3xl mx-auto">
             Descubre nuestras colecciones de fotografías artísticas y servicios profesionales
           </p>
-          <button 
-            onClick={handleEditToggle}
-            className="absolute top-2 right-2 sm:top-3 sm:right-3 lg:top-4 lg:right-4 p-fluid-xs text-fluid-xs sm:text-fluid-sm bg-gray-700 hover:bg-gray-600 text-white rounded-lg font-semibold transition-all duration-300 opacity-50 hover:opacity-100 z-10"
-          >
-            {isEditing ? 'GUARDAR' : 'EDITAR'}
-          </button>
         </div>
           
         <div className="grid-fluid">
-          {/* AQUI SE RESUELVE OTRO ERROR TS(7006) CON Product */}
-          {(isEditing ? editedProducts : products).map((product: Product) => (
-            <div key={product.id} className="group relative bg-[#1A1A1A] rounded-xl overflow-hidden hover:bg-[#2A2A2A] transition-all duration-300">
+          {products.map((product: Product) => (
+            <Link to={`/paquetes/${product.id}`} key={product.id} className="group relative bg-[#1A1A1A] rounded-xl overflow-hidden hover:bg-[#2A2A2A] transition-all duration-300">
               <div className="aspect-square relative overflow-hidden">
                 <img 
                   src={product.image} 
@@ -434,13 +343,7 @@ const Principal: React.FC = () => {
                     </span>
                   </div>
                 )}
-                {product.isNew && (
-                  <div className="absolute top-4 right-4">
-                    <span className="bg-[#C70039] text-white px-3 py-1 rounded-full text-sm font-semibold">
-                      NUEVO
-                    </span>
-                  </div>
-                )}
+                
                 {product.isPremium && (
                   <div className="absolute top-4 right-4">
                     <span className="bg-[#B8860B] text-white px-3 py-1 rounded-full text-sm font-semibold">
@@ -450,41 +353,16 @@ const Principal: React.FC = () => {
                 )}
               </div>
               <div className="p-fluid-sm">
-                {isEditing ? (
-                  <div className="space-y-2">
-                    <input
-                      type="text"
-                      name="title"
-                      value={product.title}
-                      onChange={(e) => handleChange(e, product.id)}
-                      className="w-full bg-[#2A2A2A] text-white p-1 rounded text-fluid-lg sm:text-fluid-xl font-bold"
-                    />
-                    <textarea
-                      name="description"
-                      value={product.description}
-                      onChange={(e) => handleChange(e, product.id)}
-                      className="w-full bg-[#2A2A2A] text-white p-1 rounded text-fluid-sm"
-                      rows={3}
-                    />
-                    <input
-                      type="text"
-                      name="price"
-                      value={product.price}
-                      onChange={(e) => handleChange(e, product.id)}
-                      className="w-full bg-[#2A2A2A] text-white p-1 rounded text-fluid-xl sm:text-fluid-2xl font-bold text-[#B8860B]"
-                    />
-                  </div>
-                ) : (
-                  <>
-                    <h3 className="text-[#EAEAEA] text-fluid-lg sm:text-fluid-xl font-bold mb-fluid-xs">{product.title}</h3>
-                    <p className="text-[#B3B3B3] text-fluid-sm mb-fluid-sm line-clamp-2">{product.description}</p>
-                    <div className="flex items-center justify-between">
-                      <span className="text-fluid-xl sm:text-fluid-2xl font-bold text-[#B8860B]">{product.price}</span>
-                    </div>
-                  </>
-                )}
+                <h3 className="text-[#EAEAEA] text-fluid-lg sm:text-fluid-xl font-bold mb-fluid-xs">{product.title}</h3>
+                <p className="text-[#B3B3B3] text-fluid-sm mb-fluid-sm line-clamp-2">{product.description}</p>
+                <div className="flex items-center justify-between">
+                  <span className="text-fluid-xl sm:text-fluid-2xl font-bold text-[#B8860B]">{product.price}</span>
+                  <button className="px-fluid-sm py-fluid-xs bg-[#B8860B] hover:bg-[#C70039] text-white rounded-lg font-semibold text-fluid-xs transition-all duration-300 transform hover:scale-105">
+                    Cotizar
+                  </button>
+                </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 
