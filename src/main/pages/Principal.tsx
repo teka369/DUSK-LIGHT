@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Footer from '../components/Footer';
 import MobileMenu from '../components/MobileMenu';
 import { Nav } from '../components/nav';

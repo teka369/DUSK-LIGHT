@@ -13,6 +13,7 @@ import PaqueteFamiliar from './main/pages/PaqueteFamiliar';
 import PackRedesSociales from './main/pages/PackRedesSociales';
 import PaqueteEventoCorporativo from './main/pages/PaqueteEventoCorporativo';
 import PaqueteArtistica from './main/pages/PaqueteArtistica';
+import Tienda from './main/pages/Tienda'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -21,7 +22,9 @@ createRoot(document.getElementById('root')!).render(
       <Routes>
         <Route path="/" element={<Principal />} />
         <Route path="/sobre-nosotros" element={<SobreNosotros />} />
+        
         <Route path="/portafolio" element={<Portafolio />} />
+        <Route path="/tienda" element={<Tienda />} />
         <Route path="/servicios" element={<Servicios />} />
         <Route path="/contacto" element={<Contacto />} />
         <Route path="/paquetes/1" element={<PaqueteRetratoIndividual />} />

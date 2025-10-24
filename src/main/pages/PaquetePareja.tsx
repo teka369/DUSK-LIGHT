@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Footer from '../components/Footer';
 import MobileMenu from '../components/MobileMenu';
 import { Nav } from '../components/nav';
-import { Link } from 'react-router-dom';
+
 
 interface Image {
   src: string;
