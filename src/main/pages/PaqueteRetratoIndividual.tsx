@@ -14,17 +14,17 @@ const PaqueteRetratoIndividual: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const images: Image[] = [
-    { src: '/DUSK-LIGHT/public/sesion individual/WhatsApp Image 2025-10-23 at 15.43.15.jpeg', alt: 'Imagen 1' },
-    { src: '/DUSK-LIGHT/public/sesion individual/WhatsApp Image 2025-10-23 at 15.43.15 (1).jpeg', alt: 'Imagen 2' },
-    { src: '/DUSK-LIGHT/public/sesion individual/WhatsApp Image 2025-10-23 at 15.43.19.jpeg', alt: 'Imagen 3' },
-    { src: '/DUSK-LIGHT/public/sesion individual/WhatsApp Image 2025-10-23 at 15.43.19 (1).jpeg', alt: 'Imagen 4' },
-    { src: '/DUSK-LIGHT/public/sesion individual/WhatsApp Image 2025-10-23 at 15.43.20.jpeg', alt: 'Imagen 5' },
-    { src: '/DUSK-LIGHT/public/sesion individual/WhatsApp Image 2025-10-23 at 15.43.20 (1).jpeg', alt: 'Imagen 6' },
-    { src: '/DUSK-LIGHT/public/sesion individual/WhatsApp Image 2025-10-23 at 15.43.21.jpeg', alt: 'Imagen 7' },
-    { src: '/DUSK-LIGHT/public/sesion individual/WhatsApp Image 2025-10-23 at 15.43.21 (1).jpeg', alt: 'Imagen 8' },
-    { src: '/DUSK-LIGHT/public/sesion individual/WhatsApp Image 2025-10-23 at 15.43.21 (2).jpeg', alt: 'Imagen 9' },
-    { src: '/DUSK-LIGHT/public/sesion individual/WhatsApp Image 2025-10-23 at 15.43.21 (3).jpeg', alt: 'Imagen 10' },
-    { src: '/DUSK-LIGHT/public/sesion individual/WhatsApp Image 2025-10-23 at 15.43.22.jpeg', alt: 'Imagen 11' }
+    { src: '/DUSK-LIGHT/sesion individual/WhatsApp Image 2025-10-23 at 15.43.15.jpeg', alt: 'Imagen 1' },
+    { src: '/DUSK-LIGHT/sesion individual/WhatsApp Image 2025-10-23 at 15.43.15 (1).jpeg', alt: 'Imagen 2' },
+    { src: '/DUSK-LIGHT/sesion individual/WhatsApp Image 2025-10-23 at 15.43.19.jpeg', alt: 'Imagen 3' },
+    { src: '/DUSK-LIGHT/sesion individual/WhatsApp Image 2025-10-23 at 15.43.19 (1).jpeg', alt: 'Imagen 4' },
+    { src: '/DUSK-LIGHT/sesion individual/WhatsApp Image 2025-10-23 at 15.43.20.jpeg', alt: 'Imagen 5' },
+    { src: '/DUSK-LIGHT/sesion individual/WhatsApp Image 2025-10-23 at 15.43.20 (1).jpeg', alt: 'Imagen 6' },
+    { src: '/DUSK-LIGHT/sesion individual/WhatsApp Image 2025-10-23 at 15.43.21.jpeg', alt: 'Imagen 7' },
+    { src: '/DUSK-LIGHT/sesion individual/WhatsApp Image 2025-10-23 at 15.43.21 (1).jpeg', alt: 'Imagen 8' },
+    { src: '/DUSK-LIGHT/sesion individual/WhatsApp Image 2025-10-23 at 15.43.21 (2).jpeg', alt: 'Imagen 9' },
+    { src: '/DUSK-LIGHT/sesion individual/WhatsApp Image 2025-10-23 at 15.43.21 (3).jpeg', alt: 'Imagen 10' },
+    { src: '/DUSK-LIGHT/sesion individual/WhatsApp Image 2025-10-23 at 15.43.22.jpeg', alt: 'Imagen 11' }
   ];
 
   const openLightbox = (src: string) => {
