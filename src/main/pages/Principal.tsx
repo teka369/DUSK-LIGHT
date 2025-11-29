@@ -37,12 +37,12 @@ const Principal: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const products: Product[] = [
-    { id: 1, title: 'Sesión Retrato Individual', description: 'Fotografía profesional para redes sociales, LinkedIn o uso personal. Incluye 20 fotos editadas.', price: '$50', image: '/DUSK-LIGHT/portafolio/portafolio2.jpeg', popular: true },
+    { id: 1, title: 'Sesión Retrato Individual', description: 'Fotografía profesional para redes sociales, LinkedIn o uso personal. Incluye 20 fotos editadas.', price: '$50', image: '/DUSK-LIGHT/portafolio/portafolio2.jpeg' },
     { id: 2, title: 'Sesión Pareja', description: 'Fotografía romántica para parejas. Incluye 30 fotos editadas y álbum digital.', price: '$80', image: '/DUSK-LIGHT/sesion pareja/WhatsApp Image 2025-10-23 at 15.38.22.jpeg' },
-    { id: 3, title: 'Sesión Familiar', description: 'Fotografía familiar completa. Hasta 6 personas. Incluye 40 fotos editadas.', price: '$120', image: '/DUSK-LIGHT/sesion familiar/WhatsApp Image 2025-10-23 at 15.39.26 (1).jpeg', isNew: true },
+    { id: 3, title: 'Sesión Familiar', description: 'Fotografía familiar completa. Hasta 6 personas. Incluye 40 fotos editadas.', price: '$120', image: '/DUSK-LIGHT/sesion familiar/WhatsApp Image 2025-10-23 at 15.39.26 (1).jpeg' },
     { id: 4, title: 'Pack Redes Sociales', description: '50 fotos optimizadas para Instagram, Facebook y LinkedIn. Perfecto para influencers.', price: '$150', image: '/DUSK-LIGHT/sesion redes sociales/WhatsApp Image 2025-10-23 at 15.48.53.jpeg' },
     { id: 5, title: 'Sesión Vehiculos', description: 'Fotografía automovilistica personalizada. Incluye edición y entrega en 48h.', price: '$200', image: '/DUSK-LIGHT/tienda/auto.png' },
-    { id: 6, title: 'Sesión Animales', description: 'Fotografía de tus mascotas y naturaleza. Incluye 25 fotos editadas profesionalmente.', price: '$180', image: '/DUSK-LIGHT/mascota.jpeg', isPremium: true },
+    { id: 6, title: 'Sesión Animales', description: 'Fotografía de tus mascotas y naturaleza. Incluye 25 fotos editadas profesionalmente.', price: '$180', image: '/DUSK-LIGHT/mascota.jpeg' },
   ];
 
   const portfolioItems: PortfolioItem[] = [
@@ -336,30 +336,33 @@ const Principal: React.FC = () => {
                   onContextMenu={(e) => e.preventDefault()}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                {product.popular && (
-                  <div className="absolute top-2 sm:top-4 right-2 sm:right-4">
-                    <span className="bg-[#B8860B] text-white px-2 sm:px-3 py-1 rounded-full text-fluid-xs font-semibold">
-                      POPULAR
-                    </span>
-                  </div>
-                )}
                 
-                {product.isPremium && (
-                  <div className="absolute top-4 right-4">
-                    <span className="bg-[#B8860B] text-white px-3 py-1 rounded-full text-sm font-semibold">
-                      PREMIUM
-                    </span>
-                  </div>
-                )}
+                <div className="absolute top-2 sm:top-4 left-2 sm:left-4">
+                  <span className="bg-[#B8860B] text-white px-2 sm:px-3 py-1 rounded-full text-fluid-xs font-semibold">
+                    {product.price}
+                  </span>
+                </div>
+                
               </div>
               <div className="p-fluid-sm">
                 <h3 className="text-[#EAEAEA] text-fluid-lg sm:text-fluid-xl font-bold mb-fluid-xs">{product.title}</h3>
                 <p className="text-[#B3B3B3] text-fluid-sm mb-fluid-sm line-clamp-2">{product.description}</p>
                 <div className="flex items-center justify-between">
-                  <span className="text-fluid-xl sm:text-fluid-2xl font-bold text-[#B8860B]">{product.price}</span>
-                  <button className="px-fluid-sm py-fluid-xs bg-[#B8860B] hover:bg-[#C70039] text-white rounded-lg font-semibold text-fluid-xs transition-all duration-300 transform hover:scale-105">
-                    Cotizar
-                  </button>
+                  <div>
+                    {product.popular && (
+                      <span className="bg-[#B8860B] text-white px-2 sm:px-3 py-1 rounded-full text-fluid-xs font-semibold">
+                        POPULAR
+                      </span>
+                    )}
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <button className="px-fluid-sm py-fluid-xs bg-transparent border-2 border-[#B8860B] text-[#B8860B] hover:bg-[#B8860B] hover:text-white rounded-lg font-semibold text-fluid-xs transition-all duration-300 transform hover:scale-105">
+                      Ver
+                    </button>
+                    <button className="px-fluid-sm py-fluid-xs bg-[#B8860B] hover:bg-[#C70039] text-white rounded-lg font-semibold text-fluid-xs transition-all duration-300 transform hover:scale-105">
+                      Cotizar
+                    </button>
+                  </div>
                 </div>
               </div>
             </Link>
