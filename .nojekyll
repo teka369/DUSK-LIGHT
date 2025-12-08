@@ -1,0 +1,2 @@
+# Este archivo le dice a GitHub Pages que no procese el sitio con Jekyll
+# Necesario para aplicaciones React/Vite desplegadas en subdirectorios
