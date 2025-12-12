@@ -1,12 +1,6 @@
 import React from 'react';
 import type { CartItem } from '../types';
 
-type CartState = {
-  items: CartItem[];
-  currency: string;
-  promo?: string;
-};
-
 type CartContextValue = {
   items: CartItem[];
   currency: string;

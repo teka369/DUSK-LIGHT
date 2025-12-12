@@ -37,32 +37,6 @@ const shopPhotos: ShopPhoto[] = [
   { id: 12, title: 'Paisaje Nocturno', category: 'Paisajes', price: 36, image: '/DUSK-LIGHT/images/shop/WhatsApp Image 2025-10-11 at 15.34.01.jpeg', description: 'Paisaje urbano nocturno con luces de la ciudad', size: '4000x3000px', format: 'JPG' },
 ];
 
-const CarouselActionsProduct: React.FC<{ items: Product[]; index: number }> = ({ items, index }) => {
-  const cart = useCart();
-  const navigate = useNavigate();
-  const p = items[index];
-  const item: Omit<CartItem, 'quantity'> = {
-    id: p.id,
-    title: p.title,
-    image: p.image,
-    unitPriceCents: parsePriceToCents(p.price),
-    type: 'product',
-  };
-  return (
-    <div className="flex gap-2">
-      <button
-        className="px-3 py-2 border border-[#B8860B] text-[#B8860B] hover:bg-[#B8860B] hover:text-white rounded-lg font-semibold text-fluid-xs transition-all duration-300 transform hover:scale-105"
-        onClick={() => {
-          cart.buyNow(item);
-          navigate('/checkout');
-        }}
-      >
-        Comprar ahora
-      </button>
-    </div>
-  );
-};
-
 const CarouselActionsShop: React.FC<{ items: ShopPhoto[]; index: number }> = ({ items, index }) => {
   const cart = useCart();
   const navigate = useNavigate();

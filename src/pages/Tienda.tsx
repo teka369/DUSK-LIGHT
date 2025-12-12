@@ -177,16 +177,6 @@ const Tienda: React.FC = () => {
     return matchesCategory && matchesSearch;
   });
 
-  const addToCart = (photoId: number) => {
-    setCart(prev => [...prev, photoId]);
-  };
-
-  const removeFromCart = (photoId: number) => {
-    setCart(prev => prev.filter(id => id !== photoId));
-  };
-
-  const isInCart = (photoId: number) => cart.includes(photoId);
-
   const getCartItems = () => {
     return cart.map(photoId => photos.find(photo => photo.id === photoId)).filter(Boolean);
   };
