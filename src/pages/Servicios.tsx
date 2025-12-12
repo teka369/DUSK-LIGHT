@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Footer from '../components/layout/Footer';
 import MobileMenu from '../components/layout/MobileMenu';
 import { Nav } from '../components/layout/Nav';
+import { useCart } from '../context/CartContext';
+import type { CartItem } from '../types';
 
 interface Service {
   id: number;
@@ -14,6 +16,8 @@ interface Service {
 
 const Servicios: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const cart = useCart();
+  const navigate = useNavigate();
 
   const initialServices: Service[] = [
     {
@@ -114,14 +118,38 @@ const Servicios: React.FC = () => {
                         </div>
                       ))}
                     </div>
-                    {/* Cotizar Button */}
-                    <div className="mt-6 flex justify-center">
-                      <Link
-                        to="/contacto"
+                    <div className="mt-6 flex justify-center gap-2">
+                      <button
                         className="px-4 py-2 bg-[#B8860B] hover:bg-[#C70039] text-white rounded-lg font-semibold text-sm transition-all duration-300 transform hover:scale-105"
+                        onClick={() => {
+                          const item: Omit<CartItem, 'quantity'> = {
+                            id: 1000 + service.id,
+                            title: service.title,
+                            image: '/DUSK-LIGHT/logo.png',
+                            unitPriceCents: 0,
+                            type: 'product',
+                          };
+                          cart.addItem(item);
+                        }}
                       >
-                        Cotizar
-                      </Link>
+                        Agregar al carrito
+                      </button>
+                      <button
+                        className="px-4 py-2 border border-[#B8860B] text-[#B8860B] hover:bg-[#B8860B] hover:text-white rounded-lg font-semibold text-sm transition-all duration-300 transform hover:scale-105"
+                        onClick={() => {
+                          const item: Omit<CartItem, 'quantity'> = {
+                            id: 1000 + service.id,
+                            title: service.title,
+                            image: '/DUSK-LIGHT/logo.png',
+                            unitPriceCents: 0,
+                            type: 'product',
+                          };
+                          cart.buyNow(item);
+                          navigate('/checkout');
+                        }}
+                      >
+                        Comprar ahora
+                      </button>
                     </div>
                   </div>
                   </>

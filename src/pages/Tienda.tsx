@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Nav } from '../components/layout/Nav';
 import Footer from '../components/layout/Footer';
 import MobileMenu from '../components/layout/MobileMenu';
+import { useCart } from '../context/CartContext';
+import type { CartItem } from '../types';
+import { parsePriceToCents } from '../utils/price';
 
 interface Photo {
   id: number;
@@ -27,6 +30,8 @@ const Tienda: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isRefundModalOpen, setIsRefundModalOpen] = useState(false);
   const [photoToRefund, setPhotoToRefund] = useState<number | null>(null);
+  const cartCtx = useCart();
+  const navigate = useNavigate();
   
 
   useEffect(() => {
@@ -383,17 +388,24 @@ const Tienda: React.FC = () => {
                         <span>{photo.format}</span>
                       </div>
 
-                      {/* Add to Cart Button */}
-                      <button
-                        onClick={() => isInCart(photo.id) ? removeFromCart(photo.id) : addToCart(photo.id)}
-                        className={`w-full px-4 py-3 font-semibold rounded-lg transition-all duration-300 ${
-                          isInCart(photo.id)
-                            ? 'bg-[#C70039] text-white'
-                            : 'bg-[#B8860B] text-white hover:bg-[#C70039]'
-                        }`}
-                      >
-                        {isInCart(photo.id) ? 'QUITAR DEL CARRITO' : 'AGREGAR AL CARRITO'}
-                      </button>
+                      <div className="grid grid-cols-1 gap-2">
+                        <button
+                          onClick={() => {
+                            const item: Omit<CartItem, 'quantity'> = {
+                              id: photo.id,
+                              title: photo.title,
+                              image: photo.image,
+                              unitPriceCents: parsePriceToCents(photo.price),
+                              type: 'photo',
+                            };
+                            cartCtx.buyNow(item);
+                            navigate('/checkout');
+                          }}
+                          className="px-4 py-3 font-semibold rounded-lg transition-all duration-300 bg-[#B8860B] text-white hover:bg-[#C70039]"
+                        >
+                          COMPRAR AHORA
+                        </button>
+                      </div>
                     </div>
                   </>
               </div>

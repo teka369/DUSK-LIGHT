@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import Footer from '../components/layout/Footer';
 import MobileMenu from '../components/layout/MobileMenu';
 import { Nav } from '../components/layout/Nav';
-import { Link } from 'react-router-dom';
-import type { Product } from '../types';
+import { Link, useNavigate } from 'react-router-dom';
+import type { Product, CartItem } from '../types';
 import { getProducts } from '../services/productService';
+import { useCart } from '../context/CartContext';
+import { parsePriceToCents } from '../utils/price';
 
 
 
@@ -34,6 +36,77 @@ const shopPhotos: ShopPhoto[] = [
   { id: 11, title: 'Retrato Artístico', category: 'Retratos', price: 33, image: '/DUSK-LIGHT/images/shop/WhatsApp Image 2025-10-11 at 15.34.01 (1).jpeg', description: 'Retrato artístico con iluminación dramática', size: '3000x2000px', format: 'JPG' },
   { id: 12, title: 'Paisaje Nocturno', category: 'Paisajes', price: 36, image: '/DUSK-LIGHT/images/shop/WhatsApp Image 2025-10-11 at 15.34.01.jpeg', description: 'Paisaje urbano nocturno con luces de la ciudad', size: '4000x3000px', format: 'JPG' },
 ];
+
+const CarouselActionsProduct: React.FC<{ items: Product[]; index: number }> = ({ items, index }) => {
+  const cart = useCart();
+  const navigate = useNavigate();
+  const p = items[index];
+  const item: Omit<CartItem, 'quantity'> = {
+    id: p.id,
+    title: p.title,
+    image: p.image,
+    unitPriceCents: parsePriceToCents(p.price),
+    type: 'product',
+  };
+  return (
+    <div className="flex gap-2">
+      <button
+        className="px-3 py-2 border border-[#B8860B] text-[#B8860B] hover:bg-[#B8860B] hover:text-white rounded-lg font-semibold text-fluid-xs transition-all duration-300 transform hover:scale-105"
+        onClick={() => {
+          cart.buyNow(item);
+          navigate('/checkout');
+        }}
+      >
+        Comprar ahora
+      </button>
+    </div>
+  );
+};
+
+const CarouselActionsShop: React.FC<{ items: ShopPhoto[]; index: number }> = ({ items, index }) => {
+  const cart = useCart();
+  const navigate = useNavigate();
+  const s = items[index];
+  const item: Omit<CartItem, 'quantity'> = {
+    id: s.id,
+    title: s.title,
+    image: s.image,
+    unitPriceCents: parsePriceToCents(s.price),
+    type: 'photo',
+  };
+  return (
+    <div className="flex gap-2">
+      <button
+        className="px-3 py-2 border border-[#B8860B] text-[#B8860B] hover:bg-[#B8860B] hover:text-white rounded-lg font-semibold text-fluid-xs transition-all duration-300 transform hover:scale-105"
+        onClick={() => {
+          cart.buyNow(item);
+          navigate('/checkout');
+        }}
+      >
+        Comprar ahora
+      </button>
+    </div>
+  );
+};
+
+const CardActionsProduct: React.FC<{ product: Product }> = ({ product }) => {
+  const cart = useCart();
+  const navigate = useNavigate();
+  const item: Omit<CartItem, 'quantity'> = {
+    id: product.id,
+    title: product.title,
+    image: product.image,
+    unitPriceCents: parsePriceToCents(product.price),
+    type: 'product',
+  };
+  return (
+    <div className="flex items-center gap-2">
+      <button className="px-fluid-sm py-fluid-xs bg-[#B8860B] hover:bg-[#C70039] text-white rounded-lg font-semibold text-fluid-xs transition-all duration-300 transform hover:scale-105" onClick={() => { cart.buyNow(item); navigate('/checkout'); }}>
+        Comprar ahora
+      </button>
+    </div>
+  );
+};
 
 const ShopCarousel: React.FC<{ items: ShopPhoto[] }> = ({ items }) => {
   const [currentIndex, setCurrentIndex] = React.useState(0);
@@ -104,14 +177,7 @@ const ShopCarousel: React.FC<{ items: ShopPhoto[] }> = ({ items }) => {
               <p className="text-fluid-sm sm:text-fluid-base lg:text-fluid-lg text-white/90 mb-fluid-sm max-w-2xl line-clamp-2">
                 {items[currentIndex].description}
               </p>
-              <div className="flex gap-2">
-                <Link to={`/tienda`} className="px-3 py-2 bg-[#B8860B] hover:bg-[#C70039] text-white rounded-lg font-semibold text-fluid-xs transition-all duration-300 transform hover:scale-105">
-                  Ver tienda
-                </Link>
-                <Link to="/contacto" className="px-3 py-2 border border-[#B8860B] text-[#B8860B] hover:bg-[#B8860B] hover:text-white rounded-lg font-semibold text-fluid-xs transition-all duration-300 transform hover:scale-105">
-                  Cotizar
-                </Link>
-              </div>
+              <CarouselActionsShop items={items} index={currentIndex} />
             </div>
           </div>
         )}
@@ -329,14 +395,7 @@ const Principal: React.FC = () => {
                       </span>
                     )}
                   </div>
-                  <div className="flex items-center gap-2">
-                    <button className="px-fluid-sm py-fluid-xs bg-transparent border-2 border-[#B8860B] text-[#B8860B] hover:bg-[#B8860B] hover:text-white rounded-lg font-semibold text-fluid-xs transition-all duration-300 transform hover:scale-105">
-                      Ver
-                    </button>
-                    <button className="px-fluid-sm py-fluid-xs bg-[#B8860B] hover:bg-[#C70039] text-white rounded-lg font-semibold text-fluid-xs transition-all duration-300 transform hover:scale-105">
-                      Cotizar
-                    </button>
-                  </div>
+                  <CardActionsProduct product={product} />
                 </div>
               </div>
             </Link>
