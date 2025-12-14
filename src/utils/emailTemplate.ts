@@ -39,7 +39,10 @@ export const renderOrderEmailHTML = (params: {
 
   return `
   <div style="background:#0D0D0D;color:#EAEAEA;font-family:system-ui,Segoe UI,Roboto,Arial;padding:16px">
-    <h2 style="margin:0 0 12px">Nuevo pedido pendiente</h2>
+    <div style="display:flex;align-items:center;gap:12px;margin:0 0 12px">
+      <img src="https://teka369.github.io/DUSK-LIGHT/logo.png" alt="DUSK LIGHT" width="40" height="40" style="display:block;border-radius:8px"/>
+      <h2 style="margin:0;font-size:18px">Nuevo pedido pendiente</h2>
+    </div>
     <p style="margin:0 0 16px;color:#B3B3B3">Se ha recibido un pedido desde el sitio.</p>
     <div style="margin:0 0 16px;padding:12px;border:1px solid #2A2A2A;border-radius:8px">
       <div><strong>Cliente:</strong> ${params.customer.firstName} ${params.customer.lastName}</div>
@@ -76,6 +79,13 @@ export const renderOrderEmailHTML = (params: {
         ? `<div style="margin-top:12px;padding:12px;border:1px solid #2A2A2A;border-radius:8px"><strong>Notas:</strong><div style="color:#B3B3B3">${params.notes}</div></div>`
         : ''
     }
+    <div style="margin-top:16px">
+      <a href="mailto:${params.customer.email}?subject=Pedido pendiente&body=Hola%20${encodeURIComponent(
+        params.customer.firstName
+      )},%20te%20contacto%20por%20tu%20pedido%20en%20DUSK%20LIGHT."
+        style="display:inline-block;padding:10px 14px;background:#B8860B;color:#FFFFFF;text-decoration:none;border-radius:8px;font-weight:600">
+        Responder al cliente
+      </a>
+    </div>
   </div>`
 }
-

@@ -4,6 +4,5 @@ compatibility_date = "2024-12-01"
 
 [vars]
 VENDORS = "guarinromerojuandavid@gmail.com"
-CORS_ORIGIN = "https://teka369.github.io/DUSK-LIGHT/"
+CORS_ORIGIN = "https://teka369.github.io,http://localhost:4173,http://localhost:5173"
 FROM = "onboarding@resend.dev"
-

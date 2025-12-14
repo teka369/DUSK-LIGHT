@@ -90,13 +90,13 @@ const Checkout: React.FC = () => {
           subtotalCents,
           totalCents: totalNoPromo,
           notes: form.notes,
-        }),
+          }),
         turnstileToken: undefined,
       };
-      try {
-        await submitOrder(payload);
-      } catch (_err) {
-        void _err;
+      const resp = await submitOrder(payload);
+      if (!resp || resp.status !== 'ok') {
+        setError('No se pudo enviar tu pedido. Inténtalo de nuevo.');
+        return;
       }
       clear();
       try {
@@ -105,8 +105,8 @@ const Checkout: React.FC = () => {
         void _err;
       }
       navigate(`/order-confirmation?orderId=${orderId}`, { replace: true });
-    } catch {
-      setError('Ocurrió un error al procesar tu pedido.');
+    } catch (e) {
+      setError(typeof e === 'string' ? e : 'Ocurrió un error al procesar tu pedido.');
     } finally {
       setLoading(false);
     }

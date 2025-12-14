@@ -11,14 +11,25 @@ export interface Env {
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     const origin = request.headers.get('origin') || ''
-    const allowed = env.CORS_ORIGIN || origin
+    const corsList = (env.CORS_ORIGIN || '')
+      .split(',')
+      .map((s) => s.trim())
+      .filter(Boolean)
+    const isAllowed = corsList.length === 0 || corsList.includes(origin)
+    const allowHeader = isAllowed ? origin : corsList[0] || '*'
     if (request.method === 'OPTIONS') {
       return new Response(null, {
         headers: {
-          'Access-Control-Allow-Origin': allowed,
+          'Access-Control-Allow-Origin': allowHeader,
           'Access-Control-Allow-Methods': 'POST, OPTIONS',
           'Access-Control-Allow-Headers': 'Content-Type',
         },
+      })
+    }
+    if (!isAllowed) {
+      return new Response('Forbidden', {
+        status: 403,
+        headers: { 'Access-Control-Allow-Origin': allowHeader },
       })
     }
     if (request.method !== 'POST') {
@@ -30,7 +41,7 @@ export default {
     } catch {
       return new Response(JSON.stringify({ error: 'Invalid JSON' }), {
         status: 400,
-        headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': allowed },
+        headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': allowHeader },
       })
     }
     // Basic validation
@@ -45,7 +56,7 @@ export default {
     if (!p?.customer?.email || !Array.isArray(p?.items) || (p.items?.length || 0) === 0) {
       return new Response(JSON.stringify({ error: 'Invalid payload' }), {
         status: 400,
-        headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': allowed },
+        headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': allowHeader },
       })
     }
     const vendors = (env.VENDORS || '').split(',').map((s) => s.trim()).filter(Boolean)
@@ -58,7 +69,7 @@ export default {
         }),
         {
         status: 500,
-        headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': allowed },
+        headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': allowHeader },
         }
       )
     }
@@ -86,13 +97,19 @@ export default {
       const text = await resp.text()
       return new Response(JSON.stringify({ error: 'Email send failed', detail: text }), {
         status: 502,
-        headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': allowed },
+        headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': allowHeader },
       })
     }
+    let emailRes: unknown = null
+    try {
+      emailRes = await resp.json()
+    } catch {
+      // ignore parse errors, not critical
+    }
     const id = `ORD-${Math.random().toString(36).slice(2, 10)}`
-    return new Response(JSON.stringify({ id, status: 'ok' }), {
+    return new Response(JSON.stringify({ id, status: 'ok', email: emailRes }), {
       status: 200,
-      headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': allowed },
+      headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': allowHeader },
     })
   },
 }

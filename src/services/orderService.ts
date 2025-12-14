@@ -10,6 +10,9 @@ export const submitOrder = async (order: OrderPayload) => {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(order),
   });
-  if (!res.ok) throw new Error('Order submission failed');
+  if (!res.ok) {
+    const detail = await res.text().catch(() => '');
+    throw new Error(detail || 'Order submission failed');
+  }
   return await res.json();
 };
