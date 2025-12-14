@@ -6,6 +6,7 @@ import MobileMenu from '../components/layout/MobileMenu';
 import { useCart } from '../context/CartContext';
 import { formatCOP } from '../utils/price';
 import { submitOrder } from '../services/orderService';
+import { renderOrderEmailHTML } from '../utils/emailTemplate';
 const genOrderId = () => {
   const s = Math.random().toString(36).slice(2, 10);
   return `ENV-${s}`;
@@ -69,6 +70,28 @@ const Checkout: React.FC = () => {
         discountCents: 0,
         totalCents: totalNoPromo,
         notes: form.notes,
+        emailHTML: renderOrderEmailHTML({
+          customer: {
+            firstName: form.firstName,
+            lastName: form.lastName,
+            email: form.email,
+            phone: form.phone,
+            city: form.city,
+            country: form.country,
+            address: form.address,
+          },
+          items: items.map((it) => ({
+            title: it.title,
+            unitPriceCents: it.unitPriceCents,
+            quantity: it.quantity,
+            image: it.image,
+          })),
+          currency,
+          subtotalCents,
+          totalCents: totalNoPromo,
+          notes: form.notes,
+        }),
+        turnstileToken: undefined,
       };
       try {
         await submitOrder(payload);

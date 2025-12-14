@@ -1,0 +1,9 @@
+name = "dusk-light-orders"
+main = "server/worker.ts"
+compatibility_date = "2024-12-01"
+
+[vars]
+VENDORS = "guarinromerojuandavid@gmail.com"
+CORS_ORIGIN = "https://teka369.github.io/DUSK-LIGHT/"
+FROM = "onboarding@resend.dev"
+

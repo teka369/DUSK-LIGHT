@@ -28,7 +28,6 @@ const OrderConfirmation: React.FC = () => {
             </svg>
           </div>
           <h1 className="text-3xl sm:text-4xl font-bold">Gracias por tu compra!</h1>
-          <p className="text-[#B3B3B3]">Has pagado exitosamente.</p>
           
           <div className="mt-6">
             <div className="text-[#EAEAEA] font-semibold mb-3">Compartir</div>

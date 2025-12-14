@@ -1,7 +1,11 @@
 import type { OrderPayload } from '../types';
 
+const ORDERS_ENDPOINT =
+  import.meta.env.VITE_ORDERS_ENDPOINT ||
+  'https://dusk-light-orders.guarinromerojuandavid.workers.dev';
+
 export const submitOrder = async (order: OrderPayload) => {
-  const res = await fetch('/api/orders', {
+  const res = await fetch(ORDERS_ENDPOINT, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(order),
