@@ -57,14 +57,18 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
   React.useEffect(() => {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
-    } catch {}
+    } catch (_err) {
+      void _err;
+    }
   }, [items]);
 
   React.useEffect(() => {
     try {
       if (promo) localStorage.setItem(STORAGE_PROMO, promo);
       else localStorage.removeItem(STORAGE_PROMO);
-    } catch {}
+    } catch (_err) {
+      void _err;
+    }
   }, [promo]);
 
   const subtotalCents = React.useMemo(

@@ -49,9 +49,9 @@ const CarouselActionsShop: React.FC<{ items: ShopPhoto[]; index: number }> = ({ 
     type: 'photo',
   };
   return (
-    <div className="flex gap-2">
+    <div className="inline-flex">
       <button
-        className="px-3 py-2 border border-[#B8860B] text-[#B8860B] hover:bg-[#B8860B] hover:text-white rounded-lg font-semibold text-fluid-xs transition-all duration-300 transform hover:scale-105"
+        className="px-3 py-2 bg-[#B8860B] hover:bg-[#C70039] text-white rounded-l-lg font-semibold text-fluid-xs transition-all duration-300 transform hover:scale-105"
         onClick={() => {
           cart.buyNow(item);
           navigate('/checkout');
@@ -59,28 +59,18 @@ const CarouselActionsShop: React.FC<{ items: ShopPhoto[]; index: number }> = ({ 
       >
         Comprar ahora
       </button>
-    </div>
-  );
-};
-
-const CardActionsProduct: React.FC<{ product: Product }> = ({ product }) => {
-  const cart = useCart();
-  const navigate = useNavigate();
-  const item: Omit<CartItem, 'quantity'> = {
-    id: product.id,
-    title: product.title,
-    image: product.image,
-    unitPriceCents: parsePriceToCents(product.price),
-    type: 'product',
-  };
-  return (
-    <div className="flex items-center gap-2">
-      <button className="px-fluid-sm py-fluid-xs bg-[#B8860B] hover:bg-[#C70039] text-white rounded-lg font-semibold text-fluid-xs transition-all duration-300 transform hover:scale-105" onClick={() => { cart.buyNow(item); navigate('/checkout'); }}>
-        Comprar ahora
+      <button
+        className="px-3 py-2 border border-[#B8860B] text-[#B8860B] hover:bg-[#B8860B] hover:text-white rounded-r-lg font-semibold text-fluid-xs transition-all duration-300 transform hover:scale-105"
+        onClick={() => {
+          cart.addItem(item);
+        }}
+      >
+        Agregar al carrito
       </button>
     </div>
   );
 };
+
 
 const ShopCarousel: React.FC<{ items: ShopPhoto[] }> = ({ items }) => {
   const [currentIndex, setCurrentIndex] = React.useState(0);
@@ -185,6 +175,8 @@ const ShopCarousel: React.FC<{ items: ShopPhoto[] }> = ({ items }) => {
 const Principal: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [products, setProducts] = useState<Product[]>([]);
+  const cart = useCart();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -336,7 +328,7 @@ const Principal: React.FC = () => {
           
         <div className="grid-fluid">
           {products.map((product: Product) => (
-            <Link to={`/paquetes/${product.id}`} key={product.id} className="group relative bg-[#1A1A1A] rounded-xl overflow-hidden hover:bg-[#2A2A2A] transition-all duration-300">
+            <div key={product.id} className="group relative bg-[#1A1A1A] rounded-xl overflow-hidden hover:bg-[#2A2A2A] transition-all duration-300">
               <div className="aspect-square relative overflow-hidden">
                 <img 
                   src={product.image} 
@@ -369,10 +361,48 @@ const Principal: React.FC = () => {
                       </span>
                     )}
                   </div>
-                  <CardActionsProduct product={product} />
+                  <div className="inline-flex items-center">
+                    <button
+                      className="inline-flex items-center justify-center h-10 px-3 bg-[#B8860B] hover:bg-[#C70039] text-white rounded-l-lg font-semibold text-fluid-xs transition-all duration-300 transform hover:scale-105"
+                      onClick={() => {
+                        const item: Omit<CartItem, 'quantity'> = {
+                          id: product.id,
+                          title: product.title,
+                          image: product.image,
+                          unitPriceCents: parsePriceToCents(product.price),
+                          type: 'product',
+                        };
+                        cart.buyNow(item);
+                        navigate('/checkout');
+                      }}
+                    >
+                      Comprar ahora
+                    </button>
+                    <button
+                      className="inline-flex items-center justify-center h-10 px-3 border border-[#B8860B] text-[#B8860B] hover:bg-[#B8860B] hover:text-white font-semibold text-fluid-xs transition-all duration-300 transform hover:scale-105"
+                      onClick={() => {
+                        const item: Omit<CartItem, 'quantity'> = {
+                          id: product.id,
+                          title: product.title,
+                          image: product.image,
+                          unitPriceCents: parsePriceToCents(product.price),
+                          type: 'product',
+                        };
+                        cart.addItem(item);
+                      }}
+                    >
+                      Agregar al carrito
+                    </button>
+                    <Link
+                      to={`/paquetes/${product.id}`}
+                      className="inline-flex items-center justify-center h-10 px-3 border border-[#B8860B] text-[#B8860B] hover:bg-[#B8860B] hover:text-white rounded-r-lg font-semibold text-fluid-xs transition-all duration-300 transform hover:scale-105"
+                    >
+                      Ver
+                    </Link>
+                  </div>
                 </div>
               </div>
-            </Link>
+            </div>
           ))}
         </div>
 

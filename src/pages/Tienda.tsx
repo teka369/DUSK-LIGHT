@@ -21,15 +21,14 @@ interface Photo {
 const Tienda: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState('Todas');
   const [searchTerm, setSearchTerm] = useState('');
-  const [cart, setCart] = useState<number[]>([]);
   const [purchasedPhotos, setPurchasedPhotos] = useState<number[]>(() => {
     const saved = localStorage.getItem('purchasedPhotos');
     return saved ? JSON.parse(saved) : [];
   });
-  const [isCartOpen, setIsCartOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isRefundModalOpen, setIsRefundModalOpen] = useState(false);
   const [photoToRefund, setPhotoToRefund] = useState<number | null>(null);
+  const [lastAddedId, setLastAddedId] = useState<number | null>(null);
   const cartCtx = useCart();
   const navigate = useNavigate();
   
@@ -177,25 +176,6 @@ const Tienda: React.FC = () => {
     return matchesCategory && matchesSearch;
   });
 
-  const getCartItems = () => {
-    return cart.map(photoId => photos.find(photo => photo.id === photoId)).filter(Boolean);
-  };
-
-  const getTotalPrice = () => {
-    return cart.reduce((total, photoId) => {
-      const photo = photos.find(p => p.id === photoId);
-      return total + (photo?.price || 0);
-    }, 0);
-  };
-
-  const removeFromCartModal = (photoId: number) => {
-    setCart(prev => prev.filter(id => id !== photoId));
-  };
-
-  const clearCart = () => {
-    setCart([]);
-  };
-
   const getPurchasedItems = () => {
     return photos.filter(photo => purchasedPhotos.includes(photo.id));
   };
@@ -234,27 +214,6 @@ const Tienda: React.FC = () => {
         {/* Navigation */}
         <Nav />
         
-        
-        {/* Cart Icon */}
-        <div className="flex items-center space-x-4">
-          <div className="relative">
-            <button 
-              onClick={() => setIsCartOpen(true)}
-              className="relative p-2 hover:bg-[#1A1A1A] rounded-lg transition-colors"
-            >
-              <svg className="w-6 h-6 text-[#EAEAEA] hover:text-[#B8860B] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m0 0L17 18m0 0l2.5-5M17 18l-2.5-5" />
-              </svg>
-              {cart.length > 0 && (
-                <span className="absolute -top-1 -right-1 bg-[#B8860B] text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                  {cart.length}
-                </span>
-              )}
-            </button>
-          </div>
-          
-          
-        </div>
       </header>
 
       {/* Main Content */}
@@ -378,7 +337,7 @@ const Tienda: React.FC = () => {
                         <span>{photo.format}</span>
                       </div>
 
-                      <div className="grid grid-cols-1 gap-2">
+                      <div className="inline-flex">
                         <button
                           onClick={() => {
                             const item: Omit<CartItem, 'quantity'> = {
@@ -391,11 +350,39 @@ const Tienda: React.FC = () => {
                             cartCtx.buyNow(item);
                             navigate('/checkout');
                           }}
-                          className="px-4 py-3 font-semibold rounded-lg transition-all duration-300 bg-[#B8860B] text-white hover:bg-[#C70039]"
+                          className="px-4 py-3 font-semibold rounded-l-lg transition-all duration-300 bg-[#B8860B] text-white hover:bg-[#C70039]"
                         >
                           COMPRAR AHORA
                         </button>
+                        <button
+                          onClick={() => {
+                            const item: Omit<CartItem, 'quantity'> = {
+                              id: photo.id,
+                              title: photo.title,
+                              image: photo.image,
+                              unitPriceCents: parsePriceToCents(photo.price),
+                              type: 'photo',
+                            };
+                            cartCtx.addItem(item);
+                            setLastAddedId(photo.id);
+                            window.setTimeout(() => setLastAddedId(null), 2000);
+                          }}
+                          className="px-4 py-3 font-semibold rounded-r-lg transition-all duration-300 border border-[#B8860B] text-[#B8860B] hover:bg-[#B8860B] hover:text-white"
+                        >
+                          AGREGAR AL CARRITO
+                        </button>
                       </div>
+                      {lastAddedId === photo.id && (
+                        <div className="mt-2 flex items-center gap-3">
+                          <span className="text-[#B3B3B3] text-sm">Añadido al carrito</span>
+                          <Link
+                            to="/checkout"
+                            className="px-3 py-2 bg-[#B8860B] text-white rounded-lg text-sm hover:bg-[#C70039] transition-colors"
+                          >
+                            Ir al checkout
+                          </Link>
+                        </div>
+                      )}
                     </div>
                   </>
               </div>
@@ -489,112 +476,6 @@ onMouseEnter={(e: React.MouseEvent<HTMLAnchorElement>) => e.currentTarget.style.
         </div>
       </main>
 
-      {/* Cart Modal */}
-      {isCartOpen && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-          <div className="bg-[#1A1A1A] rounded-xl max-w-2xl w-full max-h-[80vh] overflow-hidden border border-[#2A2A2A]">
-            {/* Modal Header */}
-            <div className="flex items-center justify-between p-6 border-b border-[#2A2A2A]">
-              <h2 className="text-2xl font-bold text-[#EAEAEA]">Carrito de Compras</h2>
-              <button
-                onClick={() => setIsCartOpen(false)}
-                className="text-[#B3B3B3] hover:text-[#EAEAEA] transition-colors p-2 hover:bg-[#2A2A2A] rounded-lg"
-              >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
-            </div>
-
-            {/* Modal Content */}
-            <div className="p-6 max-h-[50vh] overflow-y-auto">
-              {cart.length === 0 ? (
-                <div className="text-center py-12">
-                  <svg className="w-16 h-16 text-[#B3B3B3] mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m0 0L17 18m0 0l2.5-5M17 18l-2.5-5" />
-                  </svg>
-                  <h3 className="text-xl font-semibold text-[#EAEAEA] mb-2">Tu carrito está vacío</h3>
-                  <p className="text-[#B3B3B3]">Agrega algunas fotografías para comenzar tu compra</p>
-                </div>
-              ) : (
-                <div className="space-y-4">
-                  {getCartItems().map((photo) => (
-                    <div key={photo?.id} className="flex items-center space-x-4 p-4 bg-[#0D0D0D] rounded-lg border border-[#2A2A2A]">
-                      {/* Image */}
-                      <div className="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
-                        <img 
-                          src={photo?.image} 
-                          alt={photo?.title}
-                          className="w-full h-full object-cover filter brightness-75 contrast-110"
-                          style={{
-                            maskImage: 'radial-gradient(circle 85% at center, black 0%, transparent 75%)',
-                            WebkitMaskImage: 'radial-gradient(circle 85% at center, black 0%, transparent 75%)'
-                          }}
-                          loading="lazy"
-                        />
-                      </div>
-                      
-                      {/* Info */}
-                      <div className="flex-1 min-w-0">
-                        <h4 className="text-[#EAEAEA] font-semibold truncate">{photo?.title}</h4>
-                        <p className="text-[#B3B3B3] text-sm truncate">{photo?.description}</p>
-                        <div className="flex items-center space-x-2 mt-1">
-                          <span className="text-[#B8860B] font-bold">${photo?.price}</span>
-                          <span className="text-[#B3B3B3] text-xs">•</span>
-                          <span className="text-[#B3B3B3] text-xs">{photo?.size}</span>
-                        </div>
-                      </div>
-                      
-                      {/* Remove Button */}
-                      <button
-                        onClick={() => { if (photo?.id != null) { removeFromCartModal(photo.id) } }}
-                        className="text-[#C70039] hover:text-red-400 transition-colors p-2 hover:bg-[#2A2A2A] rounded-lg"
-                      >
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                        </svg>
-                      </button>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            {/* Modal Footer */}
-            {cart.length > 0 && (
-              <div className="p-6 border-t border-[#2A2A2A] bg-[#0D0D0D]">
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-lg font-semibold text-[#EAEAEA]">Total:</span>
-                  <span className="text-2xl font-bold text-[#B8860B]">${getTotalPrice()}</span>
-                </div>
-                
-                <div className="flex space-x-4">
-                  <button
-                    onClick={clearCart}
-                    className="flex-1 px-4 py-3 border border-[#C70039] text-[#C70039] font-semibold rounded-lg hover:bg-[#C70039] hover:text-white transition-colors"
-                  >
-                    VACIAR CARRITO
-                  </button>
-                  <button
-                    onClick={() => {
-                      setPurchasedPhotos(prev => [...prev, ...cart]);
-                      clearCart();
-                      setIsCartOpen(false);
-                      alert('¡Gracias por tu compra!');
-                    }}
-                    className="flex-1 px-4 py-3 text-white font-semibold rounded-lg transition-colors"
-                    style={{ backgroundColor: '#B8860B' }}
-                    onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#C70039'}
-                    onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#B8860B'}
-                  >
-                    PROCEDER AL PAGO
-                  </button>
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
-      )}
 
       {/* Footer */}
       <Footer />
