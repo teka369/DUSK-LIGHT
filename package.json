@@ -6,10 +6,12 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "build:root": "tsc -b && vite build --base=/",
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist",
+    "deploy": "gh-pages -d dist -c dusklight.pro",
+    "deploy:root": "npm run build:root && gh-pages -d dist -c dusklight.pro",
     "worker:secret": "wrangler secret put RESEND_API_KEY",
     "worker:deploy": "wrangler deploy"
   },

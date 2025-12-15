@@ -16,8 +16,10 @@ import OrderConfirmation from '../pages/OrderConfirmation';
 import { CartProvider } from '../context/CartContext';
 
 const App = () => {
+  const base =
+    (import.meta.env.BASE_URL ?? '/').replace(/\/$/, '') || '/';
   return (
-    <Router basename="/DUSK-LIGHT">
+    <Router basename={base}>
       <CartProvider>
         <Routes>
           <Route path="/" element={<Principal />} />

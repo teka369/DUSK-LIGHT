@@ -195,7 +195,7 @@ const Principal: React.FC = () => {
         {/* Logo */}
         <Link to="/" className="flex items-center space-x-2 sm:space-x-3">
           <img 
-            src="/DUSK-LIGHT/logo.png" 
+            src={`${import.meta.env.BASE_URL}logo.png`} 
             alt="Dusk Light Logo" 
             className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 object-contain"
           />
@@ -228,7 +228,7 @@ const Principal: React.FC = () => {
           <div className="w-full xl:w-1/2">
             <div className="relative w-full h-[300px] sm:h-[400px] md:h-[450px] lg:h-[500px] xl:h-[600px] 2xl:h-[700px] flex items-center justify-center">
               <img 
-                src="/DUSK-LIGHT/images/decoration/decoracion3.jpeg" 
+                src={`${import.meta.env.BASE_URL}images/decoration/decoracion3.jpeg`} 
                 alt="Fotografía profesional Dusk Light" 
                 className="w-full h-full object-cover filter brightness-75 contrast-110 rounded-2xl"
                 style={{
@@ -251,7 +251,7 @@ const Principal: React.FC = () => {
           <div className="w-full xl:w-1/2 order-2 xl:order-1">
             <div className="relative w-full h-[300px] sm:h-[400px] md:h-[450px] lg:h-[500px] xl:h-[600px] 2xl:h-[700px] flex items-center justify-center">
               <img 
-                src="/DUSK-LIGHT/images/decoration/decoracion2.jpeg" 
+                src={`${import.meta.env.BASE_URL}images/decoration/decoracion2.jpeg`} 
                 alt="Equipo Dusk Light trabajando" 
                 className="w-full h-full object-cover filter grayscale brightness-75 contrast-110 rounded-2xl"
                 style={{

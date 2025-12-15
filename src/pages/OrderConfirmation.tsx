@@ -15,7 +15,7 @@ const OrderConfirmation: React.FC = () => {
     <div className="min-h-screen text-[#EAEAEA]" style={{ backgroundColor: '#0D0D0D' }}>
       <header className="flex items-center justify-between px-8 py-4">
         <Link to="/" className="flex items-center space-x-3">
-          <img src="/DUSK-LIGHT/logo.png" alt="Dusk Light Logo" className="w-16 h-16 object-contain" />
+          <img src={`${import.meta.env.BASE_URL}logo.png`} alt="Dusk Light Logo" className="w-16 h-16 object-contain" />
           <span className="text-[#EAEAEA] text-xl font-bold">DUSK LIGHT</span>
         </Link>
         <Nav />

@@ -45,7 +45,7 @@ const Tienda: React.FC = () => {
       title: 'Retrato Elegante',
       category: 'Retratos',
       price: 25,
-      image: '/DUSK-LIGHT/images/shop/auto.png',
+      image: `${import.meta.env.BASE_URL}images/shop/auto.png`,
       description: 'Fotografía de retrato profesional en blanco y negro',
       size: '3000x2000px',
       format: 'JPG'
@@ -55,7 +55,7 @@ const Tienda: React.FC = () => {
       title: 'Paisaje Montañoso',
       category: 'Paisajes',
       price: 30,
-      image: '/DUSK-LIGHT/images/shop/WhatsApp Image 2025-10-11 at 15.33.58.jpeg',
+      image: `${import.meta.env.BASE_URL}images/shop/WhatsApp Image 2025-10-11 at 15.33.58.jpeg`,
       description: 'Impresionante vista de montañas al atardecer',
       size: '4000x3000px',
       format: 'JPG'
@@ -65,7 +65,7 @@ const Tienda: React.FC = () => {
       title: 'Moda Editorial',
       category: 'Moda',
       price: 35,
-      image: '/DUSK-LIGHT/images/shop/WhatsApp Image 2025-10-11 at 15.33.59 (1).jpeg',
+      image: `${import.meta.env.BASE_URL}images/shop/WhatsApp Image 2025-10-11 at 15.33.59 (1).jpeg`,
       description: 'Sesión de moda editorial con iluminación profesional',
       size: '3500x2500px',
       format: 'JPG'
@@ -75,7 +75,7 @@ const Tienda: React.FC = () => {
       title: 'Boda Romántica',
       category: 'Eventos',
       price: 40,
-      image: '/DUSK-LIGHT/images/shop/WhatsApp Image 2025-10-11 at 15.33.59 (2).jpeg',
+      image: `${import.meta.env.BASE_URL}images/shop/WhatsApp Image 2025-10-11 at 15.33.59 (2).jpeg`,
       description: 'Momento íntimo de una ceremonia de boda',
       size: '3000x2000px',
       format: 'JPG'
@@ -85,7 +85,7 @@ const Tienda: React.FC = () => {
       title: 'Arte Abstracto',
       category: 'Arte',
       price: 45,
-      image: '/DUSK-LIGHT/images/shop/WhatsApp Image 2025-10-11 at 15.33.59 (3).jpeg',
+      image: `${import.meta.env.BASE_URL}images/shop/WhatsApp Image 2025-10-11 at 15.33.59 (3).jpeg`,
       description: 'Composición artística abstracta en blanco y negro',
       size: '4000x4000px',
       format: 'JPG'
@@ -95,7 +95,7 @@ const Tienda: React.FC = () => {
       title: 'Retrato Familiar',
       category: 'Retratos',
       price: 28,
-      image: '/DUSK-LIGHT/images/shop/WhatsApp Image 2025-10-11 at 15.33.59.jpeg',
+      image: `${import.meta.env.BASE_URL}images/shop/WhatsApp Image 2025-10-11 at 15.33.59.jpeg`,
       description: 'Sesión familiar cálida y emotiva',
       size: '3000x2000px',
       format: 'JPG'
@@ -105,7 +105,7 @@ const Tienda: React.FC = () => {
       title: 'Paisaje Urbano',
       category: 'Paisajes',
       price: 32,
-      image: '/DUSK-LIGHT/images/shop/WhatsApp Image 2025-10-11 at 15.34.00 (1).jpeg',
+      image: `${import.meta.env.BASE_URL}images/shop/WhatsApp Image 2025-10-11 at 15.34.00 (1).jpeg`,
       description: 'Arquitectura urbana en contraste de luces',
       size: '4000x3000px',
       format: 'JPG'
@@ -115,7 +115,7 @@ const Tienda: React.FC = () => {
       title: 'Fashion Week',
       category: 'Moda',
       price: 38,
-      image: '/DUSK-LIGHT/images/shop/WhatsApp Image 2025-10-11 at 15.34.00 (2).jpeg',
+      image: `${import.meta.env.BASE_URL}images/shop/WhatsApp Image 2025-10-11 at 15.34.00 (2).jpeg`,
       description: 'Cobertura de pasarela de moda',
       size: '3500x2500px',
       format: 'JPG'
@@ -125,7 +125,7 @@ const Tienda: React.FC = () => {
       title: 'Evento Corporativo',
       category: 'Eventos',
       price: 42,
-      image: '/DUSK-LIGHT/images/shop/WhatsApp Image 2025-10-11 at 15.34.00 (3).jpeg',
+      image: `${import.meta.env.BASE_URL}images/shop/WhatsApp Image 2025-10-11 at 15.34.00 (3).jpeg`,
       description: 'Fotografía de evento empresarial profesional',
       size: '3000x2000px',
       format: 'JPG'
@@ -135,7 +135,7 @@ const Tienda: React.FC = () => {
       title: 'Arte Conceptual',
       category: 'Arte',
       price: 50,
-      image: '/DUSK-LIGHT/images/shop/WhatsApp Image 2025-10-11 at 15.34.00 (4).jpeg',
+      image: `${import.meta.env.BASE_URL}images/shop/WhatsApp Image 2025-10-11 at 15.34.00 (4).jpeg`,
       description: 'Fotografía conceptual con elementos surrealistas',
       size: '4000x4000px',
       format: 'JPG'
@@ -145,7 +145,7 @@ const Tienda: React.FC = () => {
       title: 'Retrato Artístico',
       category: 'Retratos',
       price: 33,
-      image: '/DUSK-LIGHT/images/shop/WhatsApp Image 2025-10-11 at 15.34.01 (1).jpeg',
+      image: `${import.meta.env.BASE_URL}images/shop/WhatsApp Image 2025-10-11 at 15.34.01 (1).jpeg`,
       description: 'Retrato artístico con iluminación dramática',
       size: '3000x2000px',
       format: 'JPG'
@@ -155,7 +155,7 @@ const Tienda: React.FC = () => {
       title: 'Paisaje Nocturno',
       category: 'Paisajes',
       price: 36,
-      image: '/DUSK-LIGHT/images/shop/WhatsApp Image 2025-10-11 at 15.34.01.jpeg',
+      image: `${import.meta.env.BASE_URL}images/shop/WhatsApp Image 2025-10-11 at 15.34.01.jpeg`,
       description: 'Paisaje urbano nocturno con luces de la ciudad',
       size: '4000x3000px',
       format: 'JPG'
@@ -204,7 +204,7 @@ const Tienda: React.FC = () => {
         {/* Logo */}
         <Link to="/" className="flex items-center space-x-3">
           <img 
-            src="/DUSK-LIGHT/logo.png" 
+            src={`${import.meta.env.BASE_URL}logo.png`} 
             alt="Dusk Light Logo" 
             className="w-16 h-16 object-contain"
           />

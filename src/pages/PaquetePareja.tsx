@@ -15,8 +15,8 @@ const PaquetePareja: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const images: Image[] = [
-    { src: '/DUSK-LIGHT/images/session-couple/WhatsApp Image 2025-10-23 at 15.38.22.jpeg', alt: 'Imagen 1' },
-    { src: '/DUSK-LIGHT/images/session-couple/WhatsApp Image 2025-10-23 at 15.38.22 (1).jpeg', alt: 'Imagen 2' },
+    { src: `${import.meta.env.BASE_URL}images/session-couple/WhatsApp Image 2025-10-23 at 15.38.22.jpeg`, alt: 'Imagen 1' },
+    { src: `${import.meta.env.BASE_URL}images/session-couple/WhatsApp Image 2025-10-23 at 15.38.22 (1).jpeg`, alt: 'Imagen 2' },
   ];
 
   const openLightbox = (src: string) => {
@@ -32,7 +32,7 @@ const PaquetePareja: React.FC = () => {
       <header className="flex items-center justify-between px-fluid-sm py-fluid-xs">
         <Link to="/" className="flex items-center space-x-2 sm:space-x-3">
           <img 
-            src="/DUSK-LIGHT/logo.png" 
+            src={`${import.meta.env.BASE_URL}logo.png`} 
             alt="Dusk Light Logo" 
             className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 object-contain"
           />

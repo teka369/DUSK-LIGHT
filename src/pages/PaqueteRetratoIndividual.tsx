@@ -15,21 +15,20 @@ const PaqueteRetratoIndividual: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const images: Image[] = [
-    { src: '/DUSK-LIGHT/images/session-individual/WhatsApp Image 2025-10-23 at 15.43.15.jpeg', alt: 'Imagen 1' },
-    { src: '/DUSK-LIGHT/images/session-individual/WhatsApp Image 2025-10-23 at 15.43.15 (1).jpeg', alt: 'Imagen 2' },
-    { src: '/DUSK-LIGHT/images/session-individual/WhatsApp Image 2025-10-23 at 15.43.19.jpeg', alt: 'Imagen 3' },
-    { src: '/DUSK-LIGHT/images/session-individual/WhatsApp Image 2025-10-23 at 15.43.19 (1).jpeg', alt: 'Imagen 4' },
-    { src: '/DUSK-LIGHT/images/session-individual/WhatsApp Image 2025-10-23 at 15.43.20.jpeg', alt: 'Imagen 5' },
-    { src: '/DUSK-LIGHT/images/session-individual/WhatsApp Image 2025-10-23 at 15.43.20 (1).jpeg', alt: 'Imagen 6' },
-    { src: '/DUSK-LIGHT/images/session-individual/WhatsApp Image 2025-10-23 at 15.43.21.jpeg', alt: 'Imagen 7' },
-    { src: '/DUSK-LIGHT/images/session-individual/WhatsApp Image 2025-10-23 at 15.43.21 (1).jpeg', alt: 'Imagen 8' },
-    { src: '/DUSK-LIGHT/images/session-individual/WhatsApp Image 2025-10-23 at 15.43.21 (2).jpeg', alt: 'Imagen 9' },
-    { src: '/DUSK-LIGHT/images/session-individual/WhatsApp Image 2025-10-23 at 15.43.21 (3).jpeg', alt: 'Imagen 10' },
-    { src: '/DUSK-LIGHT/images/session-individual/WhatsApp Image 2025-10-23 at 15.43.22.jpeg', alt: 'Imagen 11' },
-    { src: '/DUSK-LIGHT/images/individual/individual3.jpeg', alt: 'Imagen 12' },
-    { src: '/DUSK-LIGHT/images/portfolio/portafolio2.jpeg', alt: 'Imagen 13' },
-    { src: '/DUSK-LIGHT/images/individual/individual2.jpeg', alt: 'Imagen 14' }
-
+    { src: `${import.meta.env.BASE_URL}images/session-individual/WhatsApp Image 2025-10-23 at 15.43.15.jpeg`, alt: 'Imagen 1' },
+    { src: `${import.meta.env.BASE_URL}images/session-individual/WhatsApp Image 2025-10-23 at 15.43.15 (1).jpeg`, alt: 'Imagen 2' },
+    { src: `${import.meta.env.BASE_URL}images/session-individual/WhatsApp Image 2025-10-23 at 15.43.19.jpeg`, alt: 'Imagen 3' },
+    { src: `${import.meta.env.BASE_URL}images/session-individual/WhatsApp Image 2025-10-23 at 15.43.19 (1).jpeg`, alt: 'Imagen 4' },
+    { src: `${import.meta.env.BASE_URL}images/session-individual/WhatsApp Image 2025-10-23 at 15.43.20.jpeg`, alt: 'Imagen 5' },
+    { src: `${import.meta.env.BASE_URL}images/session-individual/WhatsApp Image 2025-10-23 at 15.43.20 (1).jpeg`, alt: 'Imagen 6' },
+    { src: `${import.meta.env.BASE_URL}images/session-individual/WhatsApp Image 2025-10-23 at 15.43.21.jpeg`, alt: 'Imagen 7' },
+    { src: `${import.meta.env.BASE_URL}images/session-individual/WhatsApp Image 2025-10-23 at 15.43.21 (1).jpeg`, alt: 'Imagen 8' },
+    { src: `${import.meta.env.BASE_URL}images/session-individual/WhatsApp Image 2025-10-23 at 15.43.21 (2).jpeg`, alt: 'Imagen 9' },
+    { src: `${import.meta.env.BASE_URL}images/session-individual/WhatsApp Image 2025-10-23 at 15.43.21 (3).jpeg`, alt: 'Imagen 10' },
+    { src: `${import.meta.env.BASE_URL}images/session-individual/WhatsApp Image 2025-10-23 at 15.43.22.jpeg`, alt: 'Imagen 11' },
+    { src: `${import.meta.env.BASE_URL}images/individual/individual3.jpeg`, alt: 'Imagen 12' },
+    { src: `${import.meta.env.BASE_URL}images/portfolio/portafolio2.jpeg`, alt: 'Imagen 13' },
+    { src: `${import.meta.env.BASE_URL}images/individual/individual2.jpeg`, alt: 'Imagen 14' }
   ];
 
   const openLightbox = (src: string) => {
@@ -45,7 +44,7 @@ const PaqueteRetratoIndividual: React.FC = () => {
       <header className="flex items-center justify-between px-fluid-sm py-fluid-xs">
         <Link to="/" className="flex items-center space-x-2 sm:space-x-3">
           <img 
-            src="/DUSK-LIGHT/logo.png" 
+            src={`${import.meta.env.BASE_URL}logo.png`} 
             alt="Dusk Light Logo" 
             className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 object-contain"
           />

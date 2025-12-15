@@ -14,7 +14,7 @@ const Contacto: React.FC = () => {
         {/* Logo */}
         <Link to="/" className="flex items-center space-x-3">
           <img 
-            src="/DUSK-LIGHT/logo.png" 
+            src={`${import.meta.env.BASE_URL}logo.png`} 
             alt="Dusk Light Logo" 
             className="w-16 h-16 object-contain"
           />

@@ -17,10 +17,10 @@ const SobreNosotros: React.FC = () => {
   };
 
   const teamImages = [
-    '/DUSK-LIGHT/images/individual/WhatsApp Image 2025-10-23 at 15.43.22 (1).jpeg',
-    '/DUSK-LIGHT/images/individual/individual.jpeg',
-    '/DUSK-LIGHT/images/individual/individual1.jpeg',
-    '/DUSK-LIGHT/images/individual/individual2.jpeg',
+    `${import.meta.env.BASE_URL}images/individual/WhatsApp Image 2025-10-23 at 15.43.22 (1).jpeg`,
+    `${import.meta.env.BASE_URL}images/individual/individual.jpeg`,
+    `${import.meta.env.BASE_URL}images/individual/individual1.jpeg`,
+    `${import.meta.env.BASE_URL}images/individual/individual2.jpeg`,
   ];
 
   return (
@@ -30,7 +30,7 @@ const SobreNosotros: React.FC = () => {
         {/* Logo */}
         <Link to="/" className="flex items-center space-x-3">
           <img 
-            src="/DUSK-LIGHT/logo.png" 
+            src={`${import.meta.env.BASE_URL}logo.png`} 
             alt="Dusk Light Logo" 
             className="w-16 h-16 object-contain"
           />

@@ -9,7 +9,7 @@ const Footer: React.FC = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 sm:space-x-3 justify-center md:justify-start">
             <img 
-              src="/DUSK-LIGHT/logo.png" 
+              src={`${import.meta.env.BASE_URL}logo.png`} 
               alt="Dusk Light Logo" 
               className="w-10 h-10 sm:w-12 sm:h-12 object-contain"
               loading="lazy"

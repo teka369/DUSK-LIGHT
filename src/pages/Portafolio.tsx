@@ -22,7 +22,7 @@ const Portafolio: React.FC = () => {
       id: 1,
       title: 'Sesión Retrato Individual',
       category: 'Retratos',
-      src: '/DUSK-LIGHT/images/portfolio/portafolio.jpeg',
+      src: `${import.meta.env.BASE_URL}images/portfolio/portafolio.jpeg`,
       alt: 'Sesión Retrato Individual',
       description: 'Fotografía profesional de retrato',
       tags: ['Retratos']
@@ -31,7 +31,7 @@ const Portafolio: React.FC = () => {
       id: 2,
       title: 'Sesión de Moda',
       category: 'Moda',
-      src: '/DUSK-LIGHT/images/portfolio/portafolio1.1.jpeg',
+      src: `${import.meta.env.BASE_URL}images/portfolio/portafolio1.1.jpeg`,
       alt: 'Sesión de Moda',
       description: 'Fotografía de moda editorial',
       tags: ['Moda']
@@ -40,7 +40,7 @@ const Portafolio: React.FC = () => {
       id: 3,
       title: 'Boda Elegante',
       category: 'Eventos',
-      src: '/DUSK-LIGHT/images/portfolio/portafolio2.jpeg',
+      src: `${import.meta.env.BASE_URL}images/portfolio/portafolio2.jpeg`,
       alt: 'Boda Elegante',
       description: 'Cobertura de boda completa',
       tags: ['Boda', 'Eventos']
@@ -57,7 +57,7 @@ const Portafolio: React.FC = () => {
         {/* Logo */}
         <Link to="/" className="flex items-center space-x-3">
           <img 
-            src="/DUSK-LIGHT/logo.png" 
+            src={`${import.meta.env.BASE_URL}logo.png`} 
             alt="Dusk Light Logo" 
             className="w-16 h-16 object-contain"
           />
