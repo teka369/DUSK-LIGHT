@@ -4,9 +4,20 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <script>
+      (function () {
+        var isHttp = window.location.protocol === 'http:';
+        var host = window.location.hostname;
+        if (isHttp && (host === 'dusklight.pro' || host === 'www.dusklight.pro')) {
+          var target = 'https://' + host + window.location.pathname + window.location.search + window.location.hash;
+          window.location.replace(target);
+        }
+      })();
+    </script>
     <title>dusk-light</title>
-    <script type="module" crossorigin src="/DUSK-LIGHT/assets/index-DMCZe4pa.js"></script>
-    <link rel="stylesheet" crossorigin href="/DUSK-LIGHT/assets/index-CljQAFV-.css">
+    <script type="module" crossorigin src="/assets/index-DHv9OvfC.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-CljQAFV-.css">
   </head>
   <body>
     <div id="root"></div>
